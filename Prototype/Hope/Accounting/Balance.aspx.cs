@@ -15,9 +15,11 @@ namespace Prototype.Hope.Accounting
         string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
+
+           
+
+
         }
-
-
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
         }

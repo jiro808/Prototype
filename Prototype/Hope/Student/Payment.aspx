@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" enableEventValidation="false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid" style="background-color: ghostwhite">
@@ -9,10 +9,12 @@
                 background-color: lightblue; /* Fallback background color */
                 padding: 60px 0; /* Adjust the padding as needed */
             }
+
                 .hero-section .container {
                     background: rgba(255, 255, 255, 0.0); /* Add a semi-transparent white background to the container */
                     padding: 20px;
                 }
+
             #hero {
                 height: 90.8vh; /* Set the height to 100% of the viewport height */
                 margin: 0; /* Remove margin */
@@ -28,7 +30,7 @@
             <div class="col-xl-11.5" style="padding: 5%;">
                 <div class="card">
                     <div class="card-body">
-                        <form action="#" class="form-steps" autocomplete="off">
+                        <div action="#" class="form-steps" autocomplete="off">
                             <div class="step-arrow-nav mb-4">
                                 <ul class="nav nav-pills custom-nav nav-justified" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -74,27 +76,27 @@
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_status">Status</label>
-                                                    <select id="stud_status" type="text" class="form-control" required="">
+                                                    <select id="stud_status" name="stud_status" type="text" class="form-control" required="">
                                                         <option value="option1" disabled selected>Select Your Status</option>
                                                         <option value="New Student">New Student</option>
                                                         <option value="Old Student">Old Student</option>
                                                         <option value="Trasferee">Transferee Student</option>
                                                     </select>
-                                                <div class="invalid-feedback">Please Select a Status</div>
+                                                    <div class="invalid-feedback">Please Select a Status</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_home_add">Home Address</label>
-                                                    <input type="text" class="form-control" id="stud_home_add" placeholder="Home Address" required="">
+                                                    <input type="text" class="form-control" id="stud_home_add" name="stud_home_add" placeholder="Home Address" required="">
                                                     <div class="invalid-feedback">Please enter a Home Address</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_contact_no">Contact Number</label>
-                                                    <input type="text" class="form-control" id="stud_contact_no" placeholder="Contact Number" required="">
+                                                    <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="Contact Number" required="">
                                                     <div class="invalid-feedback">Please enter a Contact Number</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_email_add">Email Address</label>
-                                                    <input type="email" class="form-control" id="stud_email_add" placeholder="Email Address" required="">
+                                                    <input type="email" class="form-control" id="stud_email_add" name="stud_email_add" placeholder="Email Address" required="">
                                                     <div class="invalid-feedback">Please enter a Email Address</div>
                                                 </div>
                                             </div>
@@ -123,62 +125,62 @@
                                     <div class="row">
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_name">Name of Father</label>
-                                            <input type="text" class="form-control" id="fth_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="fth_name" name="fth_name" placeholder="Last Name, First Name, Middle Initial" required="">
                                             <div class="invalid-feedback">Please enter a Name of Father</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="fth_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="fth_occupation" name="fth_occupation" placeholder="Occupation" required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="fth_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="fth_contact_no" name="fth_contact_no" placeholder="Contact Number" required="">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="fth_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="fth_email_add" name="fth_email_add" placeholder="Email Address" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_name">Name of Mother</label>
-                                            <input type="text" class="form-control" id="mth_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="mth_name" name="mth_name" placeholder="Last Name, First Name, Middle Initial" required="">
                                             <div class="invalid-feedback">Please enter a Name of Mother</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="mth_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="mth_occupation" name="mth_occupation" placeholder="Occupation" required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="mth_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="mth_contact_no" name="mth_contact_no" placeholder="Contact Number" required="">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="mth_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="mth_email_add" name="mth_email_add" placeholder="Email Address" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_name">Name of Guardian</label>
-                                            <input type="text" class="form-control" id="grd_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="grd_name" name="grd_name" placeholder="Last Name, First Name, Middle Initial" required="">
                                             <div class="invalid-feedback">Please enter a Name of Guardian</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="grd_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="grd_occupation" name="grd_occupation" placeholder="Occupation" required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="grd_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="grd_contact_no" name="grd_contact_no" placeholder="Contact Number" required="">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="grd_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="grd_email_add" name="grd_email_add" placeholder="Email Address" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                     </div>
@@ -192,23 +194,21 @@
                                 <div class="tab-pane fade" id="steparrow-description-info" role="tabpanel" aria-labelledby="steparrow-description-info-tab">
                                     <div class="school-fees-container">
                                         <h2>School Fees</h2>
-                                        <form id="school-fees-form">
+                                        <div id="school-fees-form">
                                             <div class="form-section">
                                                 <h3>Schedule of Fees</h3>
-                                                <label>
-                                                    <input type="radio" name="payment_schedule" value="partial" checked>
-                                                    Partial-Payment
-                                                </label>
-                                                <label>
-                                                    <input type="radio" name="payment_schedule" value="full">
-                                                    Full-Payment
-                                                </label>
+
+                                                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="20%">
+                                                    <asp:ListItem>Partial Payment</asp:ListItem>
+                                                    <asp:ListItem>Full Payment</asp:ListItem>
+                                                </asp:RadioButtonList>
+
                                             </div>
                                             <div class="form-section">
                                                 <h3>Payment Method</h3>
                                                 <select name="payment_method" id="payment-method-select">
-                                                    <option value="select_method">Select Your Payment Method</option>
-                                                    <!-- Add more options here -->
+                                                    <option value="Cash">Cash</option>
+                                                    <option value="Gcash">Gcash</option>
                                                 </select>
                                             </div>
                                             <div class="fee-details">
@@ -222,14 +222,21 @@
                                                 </div>
                                                 <div class="total">
                                                     <label for="total">Total:</label>
-                                                    <input type="text" id="total" name="total">
+                                                    <input type="text" id="total" name="total" />
                                                 </div>
                                             </div>
                                             <div class="form-section">
                                                 <h3>Discount Offers</h3>
                                                 <select name="discount_offers" id="discount-offers-select">
-                                                    <option value="select_discount">Select Your Discount Offers</option>
-                                                    <!-- Add more options here -->
+                                                    <option value="New Student Discount">New Student Discount</option>
+                                                    <option value="select_discount">Old Student Discount</option>
+                                                    <option value="select_discount">PWD Student Discount</option>
+                                                    <option value="select_discount">Solo Parent Student Discount</option>
+                                                    <option value="select_discount">Returning Student Discount</option>
+                                                    <option value="select_discount">Church Endorsement Discount</option>
+                                                    <option value="select_discount">Academic Exellence Discount</option>
+                                                    <option value="select_discount">Sibling Student Discount</option>
+                                                    <option value="select_discount">Empkoyee Discount</option>
                                                 </select>
                                             </div>
                                             <div class="discount-details">
@@ -245,8 +252,12 @@
                                                     <label for="total_discount">Total Amount of Discount:</label>
                                                     <input type="text" id="total_discount" name="total_discount">
                                                 </div>
+                                                <div class="total">
+                                                    <label for="final_discount">Final Amount:</label>
+                                                    <input type="text" id="total_final" name="total_final">
+                                                </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                     <div class="d-flex align-items-start gap-3 mt-4">
                                         <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to Student Information</button>
@@ -259,10 +270,10 @@
                                         <div id="calendar"></div>
                                         <div class="mt-3">
                                             <label for="appointmentDate">Select Date:</label>
-                                            <input type="date" id="appointmentDate">
+                                            <input type="date" id="appointmentDate" name="appointmentDate">
                                             <label for="appointmentTime">Select Time:</label>
-                                            <input type="time" id="appointmentTime">
-                                            <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Add Appointment</button>
+                                            <input type="time" id="appointmentTime" name="appointmentTime">
+                                            <button type="button" style="display: flex" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Add Appointment</button>
                                         </div>
                                     </div>
                                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -278,17 +289,17 @@
                                                 <i class="ri-checkbox-circle-fill"></i>
                                             </div>
                                         </div>
-                                        <h5>Well Done !</h5>
-                                        <p class="text-muted">You have Successfully Signed Up</p>
+                                        <h2>Well Done !</h2>
+                                        <!--  <p class="text-muted">You have Successfully Signed Up</p> -->
                                     </div>
                                     <div style="display: flex; justify-content: flex-end;">
-                                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+                                        <asp:Button ID="Button1" class="btn btn-success btn-label right ms-auto nexttab nexttab" runat="server" OnClick="Button1_Click" Text="Submit" />
                                     </div>
-                                    </div>
+                                </div>
                                 <!-- end tab pane -->
                             </div>
                             <!-- end tab content -->
-                        </form>
+                        </div>
                     </div>
                     <!-- end card body -->
                 </div>
@@ -352,6 +363,17 @@
                 }
             }
             return true;
+        }
+        function addAppointment() {
+            // Get the selected values
+            var selectedDate = document.getElementById("appointmentDate").value;
+            var selectedTime = document.getElementById("appointmentTime").value;
+
+            // Perform further actions with the selected values
+            console.log("Selected Date: " + selectedDate);
+            console.log("Selected Time: " + selectedTime);
+
+            // You can send the values to the server, update the UI, etc.
         }
         // Initial display
         showStep(currentStep);

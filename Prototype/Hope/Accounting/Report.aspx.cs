@@ -12,8 +12,8 @@ namespace Prototype.Hope.Accounting
 {
     public partial class Report : System.Web.UI.Page
     {
+        //string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
         string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -21,6 +21,7 @@ namespace Prototype.Hope.Accounting
                 conn.Open();
 
                 string sqlQuery = "SELECT [date], [student_id], [mode_of_payment], [student_name], [tuition_fee], [miscellaneuos], [amount], [discount], [type], [school_fee], [total_amount], [downpayment], [schedule_of_fees], [payment_status] FROM [Transaction_Report]";
+                //string sqlQuery = "SELECT A.date AS AppointmentDate, S.student_id, S.student_name, P.method, P.tuition, P.miscellaneous, P.total, P.discount, P.discount_type, P.final_total, P.downpayment, P.schedule_of_fees FROM Appointment A JOIN Student S ON A.student_id = S.student_id JOIN Payment P ON S.student_id = P.student_id;";
 
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {

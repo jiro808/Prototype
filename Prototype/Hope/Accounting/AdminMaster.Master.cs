@@ -9,7 +9,7 @@ namespace Prototype.Views.Admin
 {
     public partial class AdminMaster : System.Web.UI.MasterPage
     {
-        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
+        //string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
 
