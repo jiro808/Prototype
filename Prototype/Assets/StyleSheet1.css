@@ -1,0 +1,119 @@
+﻿body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #D3E7F1;
+}
+
+.container {
+    display: flex;
+    width: 750px;
+    height: 400px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 50px 60px 25px;
+    background-color: lightpink;
+}
+
+.thumbnail {
+    flex: 1 1 55%;
+    display: flex;
+    background: linear-gradient(to bottom, #ffff66 0%, #33ccff 80%);
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    padding-left: 25px;
+    padding-top: 35px;
+    border-radius: 20px 0px 0px 20px
+}
+
+.content {
+    display: flex;
+    flex: 2 1 45%;
+    background: linear-gradient(to bottom, #ffff66 0%, #33ccff 80%);
+    border-radius: 0px 20px 20px 0px;
+    justify-content: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    color: #212121;
+}
+
+.subtitle {
+    font-size: 0.725rem;
+    max-width: 80%;
+    text-align: center;
+    line-height: 1.1rem;
+    color: #8B8E98;
+    margin-bottom: 70px;
+}
+
+.input_container {
+    width: 90%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.icon {
+    width: 20px;
+    position: absolute;
+    z-index: 99;
+    left: 12px;
+    bottom: 35px;
+}
+
+.input_label {
+    font-size: 0.75rem;
+    color: #8B8E98;
+    font-weight: 600;
+}
+
+.input_field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 40px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    filter: drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+    .input_field:focus {
+        border: 1px solid transparent;
+        box-shadow: 0px 0px 0px 2px #242424;
+        background-color: transparent;
+    }
+
+.button {
+    padding: 13px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #2ba8fb;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+    .button:hover {
+        background-color: #1475b5;
+        box-shadow: 0 0 20px #6fc5ff50;
+        transform: scale(1.1);
+    }
+
+    .button:active {
+        background-color: #3d94cf;
+        transition: all 0.25s;
+        -webkit-transition: all 0.25s;
+        box-shadow: none;
+        transform: scale(0.98);
+    }
