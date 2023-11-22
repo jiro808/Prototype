@@ -91,8 +91,8 @@
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_contact_no">Contact Number</label>
-                                                    <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="Contact Number" required="">
-                                                    <div class="invalid-feedback">Please enter a Contact Number</div>
+                                                    <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
+                                                    <div class="invalid-feedback">Please enter a Valid Contact Number</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_email_add">Email Address</label>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="fth_contact_no" name="fth_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="fth_contact_no" name="fth_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="mth_contact_no" name="mth_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="mth_contact_no" name="mth_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
@@ -175,7 +175,7 @@
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="grd_contact_no" name="grd_contact_no" placeholder="Contact Number" required="">
+                                            <input type="text" class="form-control" id="grd_contact_no" name="grd_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
@@ -222,7 +222,7 @@
                                                 </div>
                                                 <div class="total">
                                                     <label for="total">Total:</label>
-                                                    <input type="text" id="total" name="total" />
+                                                    <input type="text" id="total" name="total" placeholder=" Total Amount" />
                                                 </div>
                                             </div>
                                             <div class="form-section">
