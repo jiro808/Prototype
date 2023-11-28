@@ -1,20 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <div class="container-fluid" style="background-color: ghostwhite">
+    <div class="container-fluid">
         <style>
             .hero-section {
                 background: url("images/bgdashboard.png") no-repeat center center;
                 background-size: cover;
-                background-color: lightblue; /* Fallback background color */
                 padding: 60px 0; /* Adjust the padding as needed */
             }
-
                 .hero-section .container {
                     background: rgba(255, 255, 255, 0.0); /* Add a semi-transparent white background to the container */
                     padding: 20px;
                 }
-
             #hero {
                 height: 90.8vh; /* Set the height to 100% of the viewport height */
                 margin: 0; /* Remove margin */

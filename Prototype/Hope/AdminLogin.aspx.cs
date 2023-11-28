@@ -10,7 +10,7 @@ namespace Prototype.Hope
 {
     public partial class Login : System.Web.UI.Page
     {
-        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
+        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
             //Response.Write("<script>alert('Welcome');</script>");
@@ -23,7 +23,7 @@ namespace Prototype.Hope
                 {
                     con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Accounting WHERE username = @username AND password = @password", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM AdminAccount WHERE username = @username AND password = @password", con))
                     {
                         cmd.Parameters.AddWithValue("@username", UsernameTextBox.Text);
                         cmd.Parameters.AddWithValue("@password", PasswordTextBox.Text);

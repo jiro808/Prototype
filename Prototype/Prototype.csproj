@@ -78,6 +78,7 @@
     <Content Include="Hope\Accounting\Transaction.aspx" />
     <Content Include="Hope\AdminLogin.aspx" />
     <Content Include="Hope\StudentLogin.aspx" />
+    <Content Include="Hope\Student\Dashboar.aspx" />
     <Content Include="Hope\Student\Dashboard.aspx" />
     <Content Include="Hope\Student\Inbox.aspx" />
     <Content Include="Hope\Student\Payment.aspx" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="Hope\StudentLogin.aspx.designer.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hope\Student\Dashboar.aspx.cs">
+      <DependentUpon>Dashboar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hope\Student\Dashboar.aspx.designer.cs">
+      <DependentUpon>Dashboar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hope\Student\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

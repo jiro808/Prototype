@@ -1,10 +1,33 @@
-﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Prototype.Hope.Student.Dashboard" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Dashboar.aspx.cs" Inherits="Prototype.Hope.Student.Dashboar" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <!-- Begin page -->
+       <!-- Begin page -->
    <div class="layout-wrapper landing">
        <!-- start hero section -->
-     
+       <style>
+           .hero-section {
+               background: url("images/bgdashboard.png") no-repeat center center;
+               background-size: cover;
+               padding: 60px 0; /* Adjust the padding as needed */
+           }
+
+
+           #hero {
+               height: 90.8vh; /* Set the height to 100% of the viewport height */
+               margin: 0; /* Remove margin */
+               padding: 0; /* Remove padding */
+           }
+
+           .btn.btn {
+               width: 275px;
+               height: 100px;
+               text-align: center; /* Horizontally center the content within the element */
+               display: inline-flex;
+               justify-content: left; /* Alternative way to center content horizontally */
+               align-items: center;
+           }
+       </style>
        <section class="section pb-0 hero-section" id="hero">
            <div class="container">
                <div class="row justify-content-left">
