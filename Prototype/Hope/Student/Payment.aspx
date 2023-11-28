@@ -61,6 +61,8 @@
                                                     <label class="form-label" for="stud_grade_level">Grade Level</label>
                                                     <select id="grade_level" name="grade_level" type="text" class="form-control" required="">
                                                         <option value="option1" disabled selected>Select Your Grade Level</option>
+                                                        <option value="Nursery">Nursery</option>
+                                                        <option value="Kinder">Kinder</option>
                                                         <option value="Grade 1">Grade 1</option>
                                                         <option value="Grade 2">Grade 2</option>
                                                         <option value="Grade 3">Grade 3</option>
@@ -214,35 +216,36 @@
                                             <div class="fee-details">
                                                 <div class="detail">
                                                     <label for="tuition">Tuition:</label>
-                                                    <input type="text" id="tuition" name="tuition">
+                                                    <input type="number" id="tuition" name="tuition" readonly="readonly">
                                                 </div>
                                                 <div class="detail">
                                                     <label for="miscellaneous">Miscellaneous:</label>
-                                                    <input type="text" id="miscellaneous" name="miscellaneous">
+                                                    <input type="number" id="miscellaneous" name="miscellaneous" readonly="readonly">
                                                 </div>
                                                 <div class="total">
                                                     <label for="total">Total:</label>
-                                                    <input type="text" id="total" name="total" placeholder=" Total Amount" />
+                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly">
                                                 </div>
                                             </div>
                                             <div class="form-section">
                                                 <h3>Discount Offers</h3>
-                                                <select name="discount_offers" id="discount-offers-select">
-                                                    <option value="New Student Discount">New Student Discount</option>
-                                                    <option value="select_discount">Old Student Discount</option>
-                                                    <option value="select_discount">PWD Student Discount</option>
-                                                    <option value="select_discount">Solo Parent Student Discount</option>
-                                                    <option value="select_discount">Returning Student Discount</option>
-                                                    <option value="select_discount">Church Endorsement Discount</option>
-                                                    <option value="select_discount">Academic Exellence Discount</option>
-                                                    <option value="select_discount">Sibling Student Discount</option>
-                                                    <option value="select_discount">Empkoyee Discount</option>
+                                                <select name="discount_offers" id="discount-offers-select" onchange="updateDiscountPercent()">
+                                                    <option value="option1" disabled selected>Select Discount Offers</option>
+                                                    <option value="New Student">New Student Discount</option>
+                                                    <option value="Old Student">Old Student Discount</option>
+                                                    <option value="PWD Student">PWD Student Discount</option>
+                                                    <option value="Solo Parent Student">Solo Parent Student Discount</option>
+                                                    <option value="Returning Student">Returning Student Discount</option>
+                                                    <option value="Church Endorsement">Church Endorsement Discount</option>
+                                                    <option value="Academic Exellence">Academic Exellence Discount</option>
+                                                    <option value="Sibling Student">Sibling Student Discount</option>
+                                                    <option value="Employee">Employee Discount</option>
                                                 </select>
                                             </div>
                                             <div class="discount-details">
                                                 <div class="detail">
                                                     <label for="discount_percent">Discount Percent:</label>
-                                                    <input type="text" id="discount_percent" name="discount_percent">
+                                                    <input type="number" id="discount_percent" name="discount_percent" readonly="readonly">
                                                 </div>
                                                 <div class="detail">
                                                     <label for="additional_discount">Other Additional Discount:</label>
@@ -250,11 +253,11 @@
                                                 </div>
                                                 <div class="total">
                                                     <label for="total_discount">Total Amount of Discount:</label>
-                                                    <input type="text" id="total_discount" name="total_discount">
+                                                    <input type="number" id="total_discount" name="total_discount" placeholder="Administrator should complete this section." readonly="readonly">
                                                 </div>
                                                 <div class="total">
-                                                    <label for="final_discount">Final Amount:</label>
-                                                    <input type="text" id="total_final" name="total_final">
+                                                    <label for="total_final">Final Amount:</label>
+                                                    <input type="number" id="total_final" name="total_final" readonly="readonly">
                                                 </div>
                                             </div>
                                         </div>
@@ -375,6 +378,148 @@
 
             // You can send the values to the server, update the UI, etc.
         }
+            // Function to set tuition based on selected grade level
+        function setTuition() {
+            var gradeLevel = document.getElementById("grade_level").value;
+            var tuitionInput = document.getElementById("tuition");
+            var tuition2Input = document.getElementById("miscellaneous");
+            var tuition3Input = document.getElementById("total");
+            var discountPercentInput = document.getElementById("discount_percent");
+            var totalFinalInput = document.getElementById("total_final");
+
+            // Default tuition and miscellaneous values
+            var tuition = 0;
+            var miscellaneous = 27300;
+            var total_final = 0;
+
+            // Set tuition based on grade level
+            switch (gradeLevel) {
+                case "Nursery":
+                    tuition = 25860; 
+                   
+                    break;
+                case "Kinder":
+                    tuition = 31397;
+                    break;
+                case "Grade 1":
+                    tuition = 31330;
+                    break;
+                case "Grade 2":
+                    tuition = 31330;
+                    break;
+                case "Grade 3":
+                    tuition = 31330; 
+                    break;
+                case "Grade 4":
+                    tuition = 33596; 
+                    break;
+                case "Grade 5":
+                    tuition = 33596; 
+                    break;
+                case "Grade 6":
+                    tuition = 33740; 
+                    break;
+                case "Grade 7":
+                    tuition = 31109; 
+                    break
+                case "Grade 8":
+                    tuition = 31109;
+                    break;
+                case "Grade 9":
+                    tuition = 34456;
+                    break;
+                case "Grade 10":
+                    tuition = 41012;
+                    break;
+                // Add more cases for other grade levels if needed
+
+                // Default case (if grade level is not specified)
+                default:
+                    tuition = 0; // Set the default tuition value
+                    break;
+            }
+
+
+            // Calculate total with miscellaneous
+            var total1 = tuition + miscellaneous;
+
+            // Get discount percentage
+            var discountPercent = parseFloat(discountPercentInput.value) || 0;
+
+            // Calculate discounted tuition
+            var discountedTuition = (total1 -(total1 * (discountPercent / 100) ));
+
+            // Format and update input values
+            tuitionInput.value = tuition.toFixed();
+            tuition2Input.value = miscellaneous.toFixed();
+            tuition3Input.value = total1.toFixed();
+            // Display the total with discount in the "total_final" element
+            totalFinalInput.value = discountedTuition.toFixed();
+        }
+
+      
+
+        // Attach the setTuition function to the onchange event of the grade level select
+        document.getElementById("grade_level").onchange = setTuition;
+
+        // Attach the updateDiscountPercent function to the onchange event of the discount offers select
+        document.getElementById("discount-offers-select").onchange = updateDiscountPercent;
+
+        // Attach the setTuition function to the onchange event of the discount percentage input
+        document.getElementById("discount_percent").oninput = setTuition;
+        
+
+
+
+        function updateDiscountPercent() {
+            // Get the dropdown and input elements
+            var discountOffersSelect = document.getElementById("discount-offers-select");
+            var discountPercentInput = document.getElementById("discount_percent");
+          
+
+            // Set the discount_percent based on the selected option
+            switch (discountOffersSelect.value) {
+                case "New Student":
+                    discountPercentInput.value = 5;
+                    break;
+                case "Old Student":
+                    discountPercentInput.value = 10;
+                    break;
+                case "PWD Student":
+                    discountPercentInput.value = 10;
+                    break;
+                case "Solo Parent Student":
+                    discountPercentInput.value = 10;
+                    break;
+                case "Returning Student":
+                    discountPercentInput.value = 10;
+                    break;
+                case "Church Endorsement":
+                    discountPercentInput.value = 10;
+                    break;
+                case "Academic Exellence":
+                    discountPercentInput.value = 50;
+                    break;
+                case "Sibling Student":
+                    discountPercentInput.value = 10;
+                    break;
+                case "Employee":
+                    discountPercentInput.value = 10;
+                    break;
+
+                // Add cases for other options
+                default:
+                    // Set a default value or clear the input if needed
+                    discountPercentInput = 0;
+                    break;
+            }
+            // Trigger the setTuition function to recalculate with the new discount
+            setTuition();
+
+        }
+
+
+
         // Initial display
         showStep(currentStep);
     </script>
