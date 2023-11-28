@@ -147,7 +147,7 @@ namespace Prototype.Hope.Student
                                 command4.Parameters.AddWithValue("@payment_id", paymentId);
                                 command4.ExecuteNonQuery();
 
-                                Response.Write("<script>alert('Hello, " + studname + " Payment Registration Success!');</script>");
+                                Response.Write("<script>alert('Hello, " + studname + " Payment Registration Success!'); window.location.href='Dashboard.aspx';</script>");
 
                             }
 
