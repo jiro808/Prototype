@@ -32,8 +32,10 @@ namespace Prototype.Hope
                         {
                             if (reader.Read())
                             {
-                                Response.Write("<script>alert('Welcome');</script>");
-                                Response.Redirect("~/Hope/Student/Dashboard.aspx");
+
+                                string resolvedUrl = ResolveUrl("~/Hope/Student/Dashboard.aspx");
+                                Response.Write("<script>alert('Welcome, Student You have successfully logged in.'); window.location.href='" + resolvedUrl + "';</script>");
+
                             }
                             else
                             {
