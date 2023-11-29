@@ -7,7 +7,7 @@
             <div class="col-8">
                 <div class="calendar-container" style="height:720px; gap:20px; display:flex; flex-direction: column; border-width: 0px;">
                     <div class="calendar-header" style="border-radius: 10px; border:solid; border-width: 1px">
-                        <h3>Calendar</h3>
+                        <h2>Calendar</h2>
                     </div>
                     <div style="text-align:center; cursor: default">
                         <asp:Calendar ID="Calendar1" runat="server" OnDayRender="Calendar1_DayRender" Width="100%" height="645px" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" NextPrevFormat="ShortMonth" BorderWidth="1px" DayNameFormat="Full" ShowGridLines="True" BackColor="GhostWhite">
