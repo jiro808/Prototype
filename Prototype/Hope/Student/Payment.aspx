@@ -386,8 +386,8 @@
 
             // Default tuition and miscellaneous values
             var tuition = 0;
-            var miscellaneous = 27300;
-            var total_final = 0;
+            var miscellaneous = 18200;
+            var fee = 9100;
 
             // Set tuition based on grade level
             switch (gradeLevel) {
@@ -438,7 +438,7 @@
 
 
             // Calculate total with miscellaneous
-            var total1 = tuition + miscellaneous;
+            var total1 = tuition + miscellaneous + fee;
 
             // Get discount percentage
             var discountPercent = parseFloat(discountPercentInput.value) || 0;
