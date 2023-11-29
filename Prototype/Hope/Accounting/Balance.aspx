@@ -4,10 +4,10 @@
     <div class="container-fluid" style="padding: 20px; padding-top: 50px">
         <div class="container-fluid" style="background-color: ghostwhite; padding: 20px">
             <div class="col">
-                <h4>Overdue Balance</h4>
+                <h3>Overdue Balance</h3>
             </div>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 50%; margin: 20px">
-                <asp:RadioButtonList ID="rblFilter" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rblFilter_SelectedIndexChanged" RepeatDirection="Horizontal" Width="100%">
+                <asp:RadioButtonList ID="rblFilter" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rblFilter_SelectedIndexChanged" RepeatDirection="Horizontal" Width="100%" Font-Size="20px">
                     <asp:ListItem Text="All" Value="All" Selected="True" />
                     <asp:ListItem Text="Paid" Value="Paid" />
                     <asp:ListItem Text="Unpaid" Value="Unpaid" />
@@ -16,25 +16,58 @@
         </div>
         <div class="container-fluid" style="background-color: ghostwhite; margin-top: 10px; padding: 20px">
             <div class="input-group mb-3" style="left: 0px; top: 0px">
-                <asp:Button ID="Button3" runat="server" Text="Search" OnClick="Button3_Click" />
-                <asp:TextBox ID="TextBox1" runat="server" placeholder="Enter Student ID or Name" Width="25%"></asp:TextBox>
+                <asp:Button ID="Button3" runat="server" Text="Search" OnClick="Button3_Click" Font-Size="20px" />
+                <asp:TextBox ID="TextBox1" runat="server" placeholder="Enter Student ID or Name" Width="25%" Font-Size="20px"></asp:TextBox>
             </div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" SelectionMode="Single" EditRowStyle-BackColor="#0d6efd" EditRowStyle-ForeColor="White" DataKeyNames="invoice_no">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="invoice_no" Width="100%" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
                 <Columns>
-                    <asp:BoundField DataField="invoice_no" HeaderText="invoice_no" ReadOnly="True" SortExpression="invoice_no" ItemStyle-Width="14.28%"></asp:BoundField>
-                    <asp:BoundField DataField="student_id" HeaderText="student_id" SortExpression="student_id" ItemStyle-Width="14.28%"></asp:BoundField>
-                    <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" ItemStyle-Width="14.28%"></asp:BoundField>
-                    <asp:BoundField DataField="total" HeaderText="total" SortExpression="total" ItemStyle-Width="14.28%"></asp:BoundField>
-                    <asp:BoundField DataField="due" HeaderText="due" SortExpression="due" ItemStyle-Width="14.28%"></asp:BoundField>
-                    <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" ItemStyle-Width="14.28%"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Invoice No.">
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("invoice_no") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Student ID">
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("student_id") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Name">
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("name") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Date">
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("date", "{0:d}") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Total">
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("total", "{0:N2}") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Due">
+                        <ItemTemplate>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("due", "{0:d}") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Status">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Eval("status") %>' Style="font-size: 20px;">
+                                <asp:ListItem>Paid</asp:ListItem>
+                                <asp:ListItem>Unpaid</asp:ListItem>
+                                <asp:ListItem>Pending</asp:ListItem>
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("status") %>' Style="font-size: 20px;"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
                 </Columns>
-
-<EditRowStyle BackColor="#0D6EFD" ForeColor="White"></EditRowStyle>
-
-                <HeaderStyle BackColor="#0d6efd" ForeColor="White" />
+                <EditRowStyle BackColor="lightblue" ForeColor="black"></EditRowStyle>
+                <HeaderStyle BackColor="#0d6efd" ForeColor="White" Font-Size="22px" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SIA_BILLINGConnectionString %>" SelectCommand="SELECT OB.invoice_no, S.student_id, OB.date, OB.total, OB.due, OB.status FROM OverdueBalance AS OB INNER JOIN Student AS S ON OB.student_id = S.student_id">
-            </asp:SqlDataSource>
         </div>
     </div>
 </asp:Content>

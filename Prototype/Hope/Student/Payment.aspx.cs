@@ -142,10 +142,40 @@ namespace Prototype.Hope.Student
                             using (SqlCommand command4 = new SqlCommand(query4, connection))
                             {
                                 string appointmentDate = Request["appointmentDate"];
+
                                 command4.Parameters.AddWithValue("@date", appointmentDate);
                                 command4.Parameters.AddWithValue("@student_id", studentId);
                                 command4.Parameters.AddWithValue("@payment_id", paymentId);
                                 command4.ExecuteNonQuery();
+
+                            }
+                            string query5 = "INSERT INTO OverdueBalance (student_id, date, total, due, status) VALUES (@student_id, @date, @total, @due, @status)";
+                            using (SqlCommand command5 = new SqlCommand(query5, connection))
+                            {
+                                string appointmentDate = Request["appointmentDate"];
+                                DateTime.TryParse(appointmentDate, out DateTime originalDate);
+                                DateTime dueDate = originalDate.AddMonths(6);
+                                string resultDueDate = dueDate.ToString();
+
+                               
+
+                                command5.Parameters.AddWithValue("@student_id", studentId);
+                                command5.Parameters.AddWithValue("@date", appointmentDate);  
+                                command5.Parameters.AddWithValue("@total", finaltotalInt);
+
+
+                                if (paymentschedule == "Partial Payment")
+                                {
+                                    command5.Parameters.AddWithValue("@due", resultDueDate);
+                                    command5.Parameters.AddWithValue("@status", "Pending");
+                                }
+                                else if (paymentschedule == "Full Payment")
+                                {
+                                    command5.Parameters.AddWithValue("@due", appointmentDate);
+                                    command5.Parameters.AddWithValue("@status", "Pending");
+                                }
+
+                                command5.ExecuteNonQuery();
 
                                 Response.Write("<script>alert('Hello, " + studname + " Payment Registration Success!'); window.location.href='Dashboard.aspx';</script>");
 
