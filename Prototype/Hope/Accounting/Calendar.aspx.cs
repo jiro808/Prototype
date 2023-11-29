@@ -12,8 +12,7 @@ namespace Prototype.Hope.Accounting
 {
     public partial class Calendar : System.Web.UI.Page
     {
-        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
-
+        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,7 +20,6 @@ namespace Prototype.Hope.Accounting
                 BindCalendar();
             }
         }
-
         private void BindCalendar()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -61,21 +59,17 @@ namespace Prototype.Hope.Accounting
                 if (appointmentCount > 0)
                 {
                     // Set the background color based on the appointment count
-                    if (appointmentCount == 1)
+                    if (appointmentCount >= 1 && appointmentCount <= 3)
                     {
-                        e.Cell.BackColor = System.Drawing.Color.Wheat;
+                        e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#ACF3AE");
                     }
-                    else if (appointmentCount == 2)
+                    else if (appointmentCount >= 4 && appointmentCount <= 6)
                     {
-                        e.Cell.BackColor = System.Drawing.Color.Red;
+                        e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#FA6B84");
                     }
-                    else if (appointmentCount == 3)
+                    else
                     {
-                        e.Cell.BackColor = System.Drawing.Color.Blue;
-                    }
-                    else 
-                    {
-                        e.Cell.BackColor = System.Drawing.Color.GhostWhite;
+                        e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#C43D5A");
                     }
 
                     // Create a label to display the appointment count
@@ -83,10 +77,8 @@ namespace Prototype.Hope.Accounting
                     countLabel.Text = appointmentCount.ToString();
                     countLabel.ForeColor = System.Drawing.Color.Black; // Set the text color
                     countLabel.Font.Bold = true;
-
                     // Add the label to the right side of the cell
                     e.Cell.Controls.Add(countLabel);
-
                     countLabel.Style.Add("position", "relative");
                     countLabel.Style.Add("top", "25%"); // Adjust the top position as needed
                     countLabel.Style.Add("left", "20%"); // Adjust the left position as needed

@@ -11,17 +11,13 @@
                     </div>
                     <div style="text-align:center; cursor: default">
                         <asp:Calendar ID="Calendar1" runat="server" OnDayRender="Calendar1_DayRender" Width="100%" height="645px" BorderStyle="Solid" CellSpacing="1" Font-Names="Verdana" Font-Size="12pt" ForeColor="Black" NextPrevFormat="ShortMonth" BorderWidth="1px" DayNameFormat="Full" ShowGridLines="True" BackColor="GhostWhite">
-                            <DayHeaderStyle Font-Bold="True" Font-Size="12pt" ForeColor="black" Height="12pt" BorderStyle="Solid" BorderWidth="1px" BackColor="#CEE7FF" />
-                            <DayStyle BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" />
-                            <NextPrevStyle Font-Bold="True" Font-Size="12pt" ForeColor="black" />
+                            <DayHeaderStyle Font-Bold="True" Font-Size="20pt" ForeColor="black" Height="12pt" BorderStyle="Solid" BorderWidth="1px" BackColor="#CEE7FF" />
+                            <DayStyle BackColor="GhostWhite" BorderStyle="Solid" BorderWidth="1px"  Font-Size="15pt"/>
+                            <NextPrevStyle Font-Bold="True" Font-Size="15pt" ForeColor="black" />
                             <OtherMonthDayStyle ForeColor="black" />
-                            <SelectedDayStyle BackColor="#D3E7F1" ForeColor="White" />
-                            <TitleStyle BackColor="GhostWhite" BorderStyle="Solid" Font-Bold="True" Font-Size="14pt" ForeColor="black" Height="20pt" />
-                            <TodayDayStyle BackColor="#999999" ForeColor="White" />
+                            <TitleStyle BackColor="GhostWhite" BorderStyle="Solid" Font-Bold="True" Font-Size="20pt" ForeColor="black" Height="20pt" />
+                            <TodayDayStyle BackColor="#999999" ForeColor="Black" />
                         </asp:Calendar>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
                     </div>
                 </div>
             </div>
