@@ -66,7 +66,7 @@
                     <asp:CommandField ShowEditButton="True" />
                 </Columns>
                 <EditRowStyle BackColor="lightblue" ForeColor="black"></EditRowStyle>
-                <HeaderStyle BackColor="#0d6efd" ForeColor="White" Font-Size="22px" Height="35px" />
+                <HeaderStyle BackColor="#0d6efd" ForeColor="White" Font-Size="22px" Height="35px"/>
             </asp:GridView>
         </div>
     </div>
