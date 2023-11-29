@@ -30,9 +30,31 @@ namespace Prototype.Hope.Student
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string studname = Request["stud_name"];
+            string gradelvl = Request["grade_level"];
+            string status = Request["stud_status"];
+            string address = Request["stud_home_add"];
+            string contact = Request["stud_contact_no"];
+            string email = Request["stud_email_add"];
+            string fthname = Request["fth_name"];
+            string fthoccu = Request["fth_occupation"];
+            string fthcontact = Request["fth_contact_no"];
+            string fthemail = Request["fth_email_add"];
+            string mthname = Request["mth_name"];
+            string mthoccu = Request["mth_occupation"];
+            string mthcontact = Request["mth_contact_no"];
+            string mthemail = Request["mth_email_add"];
+            string grdname = Request["grd_name"];
+            string grdoccu = Request["grd_occupation"];
+            string grdcontact = Request["grd_contact_no"];
+            string grdemail = Request["grd_email_add"];
+
+            string paymentschedule = RadioButtonList1.SelectedValue;
+            string paymentmethod = Request["payment_method"];
             string tuitionValue = Request["tuition"];
             string miscellaneousValue = Request["miscellaneous"];
             string totalValue = Request["total"];
+            string discountoffer = Request["discount_offers"];
             string discountValue = Request["discount_percent"];
             string finaltotalValue = Request["total_final"];
 
@@ -48,6 +70,14 @@ namespace Prototype.Hope.Student
             int.TryParse(discountValue, out discountInt);
             int.TryParse(finaltotalValue, out finaltotalInt);
 
+            string appointmentDate = Request["appointmentDate"];
+            string appointmentTime = Request["appointmentTime"];
+
+
+            DateTime.TryParse(appointmentDate, out DateTime originalDate);
+            DateTime dueDate = originalDate.AddMonths(6);
+            string resultDueDate = dueDate.ToString();
+
 
             try
             {
@@ -59,24 +89,7 @@ namespace Prototype.Hope.Student
                     string query = "INSERT INTO Student (name, grade_level, status, address, contact_no, email, father_name, father_occupation, father_contact, father_email, mother_name, mother_occupation, mother_contact, mother_email, guardian_name, guardian_occupation, guardian_contact, guardian_email) VALUES (@name, @grade_level, @status, @address, @contact_no, @email, @father_name, @father_occupation, @father_contact, @father_email, @mother_name, @mother_occupation, @mother_contact, @mother_email, @guardian_name, @guardian_occupation, @guardian_contact, @guardian_email); SELECT SCOPE_IDENTITY();";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        string studname = Request["stud_name"];
-                        string gradelvl = Request["grade_level"];
-                        string status = Request["stud_status"];
-                        string address = Request["stud_home_add"];
-                        string contact = Request["stud_contact_no"];
-                        string email = Request["stud_email_add"];
-                        string fthname = Request["fth_name"];
-                        string fthoccu = Request["fth_occupation"];
-                        string fthcontact = Request["fth_contact_no"];
-                        string fthemail = Request["fth_email_add"];
-                        string mthname = Request["mth_name"];
-                        string mthoccu = Request["mth_occupation"];
-                        string mthcontact = Request["mth_contact_no"];
-                        string mthemail = Request["mth_email_add"];
-                        string grdname = Request["grd_name"];
-                        string grdoccu = Request["grd_occupation"];
-                        string grdcontact = Request["grd_contact_no"];
-                        string grdemail = Request["grd_email_add"];
+
 
 
 
@@ -106,9 +119,7 @@ namespace Prototype.Hope.Student
                         using (SqlCommand command2 = new SqlCommand(query2, connection))
                         {
 
-                            string paymentschedule = RadioButtonList1.SelectedValue;
-                            string paymentmethod = Request["payment_method"];
-                            string discountoffer = Request["discount_offers"];
+
 
 
                             command2.Parameters.AddWithValue("@schedule", paymentschedule);
@@ -122,14 +133,11 @@ namespace Prototype.Hope.Student
 
                             int paymentId = Convert.ToInt32(command2.ExecuteScalar());
 
-
-
                             string query3 = "INSERT INTO Appointment (student_id, date, time) VALUES (@student_id, @date, @time)";
                             using (SqlCommand command3 = new SqlCommand(query3, connection))
                             {
 
-                                string appointmentDate = Request["appointmentDate"];
-                                string appointmentTime = Request["appointmentTime"];
+
 
                                 command3.Parameters.AddWithValue("@student_id", studentId);
                                 command3.Parameters.AddWithValue("@date", appointmentDate);
@@ -141,7 +149,7 @@ namespace Prototype.Hope.Student
                             string query4 = "INSERT INTO [Transaction] (date, student_id, payment_id) VALUES (@date, @student_id, @payment_id)";
                             using (SqlCommand command4 = new SqlCommand(query4, connection))
                             {
-                                string appointmentDate = Request["appointmentDate"];
+
 
                                 command4.Parameters.AddWithValue("@date", appointmentDate);
                                 command4.Parameters.AddWithValue("@student_id", studentId);
@@ -152,10 +160,6 @@ namespace Prototype.Hope.Student
                             string query5 = "INSERT INTO OverdueBalance (student_id, date, total, due, status) VALUES (@student_id, @date, @total, @due, @status)";
                             using (SqlCommand command5 = new SqlCommand(query5, connection))
                             {
-                                string appointmentDate = Request["appointmentDate"];
-                                DateTime.TryParse(appointmentDate, out DateTime originalDate);
-                                DateTime dueDate = originalDate.AddMonths(6);
-                                string resultDueDate = dueDate.ToString();
 
                                
 
