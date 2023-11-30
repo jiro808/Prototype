@@ -4,8 +4,11 @@
 
 <html>
 <head runat="server">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title></title>
     <link href="../../Library/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../../Styles/sweetalert.css" rel="stylesheet" />
+        <script src="../../Scripts/sweetalert.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

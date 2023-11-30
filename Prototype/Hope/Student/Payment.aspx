@@ -48,7 +48,7 @@
                                     <div class="row">
                                         <div class="col-lg-9">
                                             <div class="row">
-                                                <h4>STUDENT INFORMATION</h4>
+                                                <h4>STUDENT DETAILS</h4>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_name">Name</label>
                                                     <input type="text" class="form-control" id="stud_name" name="stud_name" placeholder="Last Name, First Name, Middle Initial" required="">
@@ -189,16 +189,6 @@
                                         <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="steparrow-description-info-tab" style="display: flex; align-items: center; gap: inherit; background-color: #31ad74;">Nest Step<img src="../../Library/Images/image.png" height="21" width="21" /></button>
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
-
-
                                 <!-- end tab pane -->
                                 <div class="tab-pane fade" id="steparrow-description-info" role="tabpanel" aria-labelledby="steparrow-description-info-tab">
                                     <div class="school-fees-container">
@@ -220,18 +210,18 @@
                                                 </select>
                                                 <div class="invalid-feedback">Please Select Payment Method</div>
                                             </div>
-                                            <div class="fee-details">
+                                            <div class="fee-details"> 
                                                 <div class="detail">
                                                     <label for="tuition">Tuition:</label>
                                                     <input type="number" id="tuition" name="tuition" readonly="readonly">
                                                 </div>
                                                 <div class="detail">
-                                                    <label for="miscellaneous">Miscellaneous:</label>
+                                                    <label for="miscellaneous">Miscellaneous & Other Fees:</label>
                                                     <input type="number" id="miscellaneous" name="miscellaneous" readonly="readonly">
                                                 </div>
                                                 <div class="total">
                                                     <label for="total">Total:</label>
-                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly">
+                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly"> 
                                                 </div>
                                             </div>
                                             <div class="form-section">
@@ -280,9 +270,9 @@
                                     <div class="container mt-5" style="display:flex; justify-content: space-between">
                                         <div class="mt-3">
                                             <label for="appointmentDate">Select Date:</label>
-                                            <input type="date" id="appointmentDate" name="appointmentDate" />
+                                            <input type="date" id="appointmentDate" name="appointmentDate" required="required"/>
                                             <label for="appointmentTime">Select Time:</label>
-                                            <input type="time" id="appointmentTime" name="appointmentTime" min="8:00" max="14:00" />
+                                            <input type="time" id="appointmentTime" name="appointmentTime" min="8:00" max="14:00" required="required"/>
                                         </div>
                                         <div>
                                             <img src="../../Library/Images/appside.jpg"  height="420" width="420"/>
@@ -385,7 +375,7 @@
             var totalFinalInput = document.getElementById("total_final");
             // Default tuition and miscellaneous values
             var tuition = 0;
-            var miscellaneous = 18200;
+            var miscellaneous = 15800;
             var fee = 9100;
             // Set tuition based on grade level
             switch (gradeLevel) {
@@ -431,6 +421,7 @@
                     tuition = 0; // Set the default tuition value
                     break;
             }
+            var mis = miscellaneous + 7900;
             // Calculate total with miscellaneous
             var total1 = tuition + miscellaneous + fee;
             // Get discount percentage
@@ -439,7 +430,7 @@
             var discountedTuition = (total1 - (total1 * (discountPercent / 100)));
             // Format and update input values
             tuitionInput.value = tuition.toFixed();
-            tuition2Input.value = miscellaneous.toFixed();
+            tuition2Input.value = mis.toFixed();
             tuition3Input.value = total1.toFixed();
             // Display the total with discount in the "total_final" element
             totalFinalInput.value = discountedTuition.toFixed();
