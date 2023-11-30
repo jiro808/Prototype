@@ -33,16 +33,13 @@
                             <div class="step-arrow-nav mb-4">
                                 <ul class="nav nav-pills custom-nav nav-justified" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="steparrow-gen-info-tab" type="button" role="tab" aria-controls="steparrow-gen-info" aria-selected="true" data-position="0">Student Information</button>
+                                        <button class="nav-link active" id="steparrow-gen-info-tab" type="button" role="tab" aria-controls="steparrow-gen-info" aria-selected="true" data-position="0" disabled>Student Information</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="steparrow-description-info-tab" type="button" role="tab" aria-controls="steparrow-description-info" aria-selected="false" data-position="1" tabindex="-1">School Fees</button>
+                                        <button class="nav-link" id="steparrow-description-info-tab" type="button" role="tab" aria-controls="steparrow-description-info" aria-selected="false" data-position="1" tabindex="-1" disabled>School Fees</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="steparrow-appointment-info-tab" type="button" role="tab" aria-controls="steparrow-appointment-info" aria-selected="false" data-position="1" tabindex="-1">Appointment Schedule</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-experience-tab" type="button" role="tab" aria-controls="pills-experience" aria-selected="false" data-position="2" tabindex="-1">Finish</button>
+                                        <button class="nav-link" id="steparrow-appointment-info-tab" type="button" role="tab" aria-controls="steparrow-appointment-info" aria-selected="false" data-position="1" tabindex="-1" disabled>Appointment Schedule</button>
                                     </li>
                                 </ul>
                             </div>
@@ -51,6 +48,7 @@
                                     <div class="row">
                                         <div class="col-lg-9">
                                             <div class="row">
+                                                <h4>STUDENT INFORMATION</h4>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_name">Name</label>
                                                     <input type="text" class="form-control" id="stud_name" name="stud_name" placeholder="Last Name, First Name, Middle Initial" required="">
@@ -121,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 mt-1">
-                                        <h3>PARENTS / GUARDIAN DETAILS</h3>
+                                        <h4>PARENTS / GUARDIAN DETAILS</h4>
                                     </div>
                                     <div class="row">
                                         <div class="mb-3 col-lg-3">
@@ -186,10 +184,21 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-start gap-3 mt-4">
-                                        <a href="Dashboard.aspx" type="button" class="btn btn-light btn-label previestab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to Dashboard</a>
-                                        <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="steparrow-description-info-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Go to School Fees</button>
+                                        <a href="Dashboard.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray;">
+                                            <img src="../../Library/Images/backgray.png" height="21" width="21" />Back to Dashboard</a>
+                                        <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="steparrow-description-info-tab" style="display: flex; align-items: center; gap: inherit; background-color: #31ad74;">Nest Step<img src="../../Library/Images/image.png" height="21" width="21" /></button>
                                     </div>
                                 </div>
+
+
+
+
+
+
+
+
+
+
                                 <!-- end tab pane -->
                                 <div class="tab-pane fade" id="steparrow-description-info" role="tabpanel" aria-labelledby="steparrow-description-info-tab">
                                     <div class="school-fees-container">
@@ -197,7 +206,6 @@
                                         <div id="school-fees-form">
                                             <div class="form-section">
                                                 <h3>Schedule of Fees</h3>
-
                                                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="20%">
                                                     <asp:ListItem>Partial Payment</asp:ListItem>
                                                     <asp:ListItem>Full Payment</asp:ListItem>
@@ -263,39 +271,30 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-start gap-3 mt-4">
-                                        <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to Student Information</button>
-                                        <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Go to Appointment Schedule</button>
+                                        <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray"><img src="../../Library/Images/backgray.png" height="21" width="21" />Back to Student Information</button>
+                                        <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab" style="display: flex; align-items: center; gap: inherit; background-color: #31ad74">Next Step<img src="../../Library/Images/image.png" height="21" width="21" /></button>
                                     </div>
                                 </div>
                                 <!-- end tab pane -->
                                 <div class="tab-pane fade" id="steparrow-appointment-info" role="tabpanel" aria-labelledby="steparrow-appointment-info-tab">
-                                    <div class="container mt-5">
-                                        <div id="calendar"></div>
+                                    <div class="container mt-5" style="display:flex; justify-content: space-between">
                                         <div class="mt-3">
                                             <label for="appointmentDate">Select Date:</label>
-                                            <input type="date" id="appointmentDate" name="appointmentDate">
+                                            <input type="date" id="appointmentDate" name="appointmentDate" />
                                             <label for="appointmentTime">Select Time:</label>
-                                            <input type="time" id="appointmentTime" name="appointmentTime">
-                                            <button type="button" style="display: flex" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Add Appointment</button>
+                                            <input type="time" id="appointmentTime" name="appointmentTime" />
+                                        </div>
+                                        <div>
+                                            <img src="../../Library/Images/appside.jpg"  height="420" width="420"/>
                                         </div>
                                     </div>
                                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.bundle.min.js"></script>
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
                                     <script src="script.js"></script>
-                                </div>
-                                <!-- end tab pane -->
-                                <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="pills-experience-tab">
-                                    <div class="text-center">
-                                        <div class="avatar-md mt-5 mb-4 mx-auto">
-                                            <div class="avatar-title bg-light text-success display-4 rounded-circle">
-                                                <i class="ri-checkbox-circle-fill"></i>
-                                            </div>
-                                        </div>
-                                        <h2>Well Done !</h2>
-                                        <!--  <p class="text-muted">You have Successfully Signed Up</p> -->
-                                    </div>
-                                    <div style="display: flex; justify-content: flex-end;">
+                                    <div class="d-flex align-items-start gap-3 mt-4">
+                                        <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray">
+                                            <img src="../../Library/Images/backgray.png" height="21" width="21" />Back to School Fees</button>
                                         <asp:Button ID="Button1" class="btn btn-success btn-label right ms-auto nexttab nexttab" runat="server" OnClick="Button1_Click" Text="Submit" />
                                     </div>
                                 </div>

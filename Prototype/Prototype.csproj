@@ -99,12 +99,17 @@
     <Content Include="Library\css\bootstrap.rtl.css" />
     <Content Include="Library\css\bootstrap.rtl.min.css" />
     <Content Include="Library\Images\appointment.png" />
+    <Content Include="Library\Images\appppppp.png" />
+    <Content Include="Library\Images\appside.jpg" />
+    <Content Include="Library\Images\arrow-alt-circle-left.png" />
     <Content Include="Library\Images\back-white.png" />
     <Content Include="Library\Images\back.png" />
+    <Content Include="Library\Images\backgray.png" />
     <Content Include="Library\Images\calendar.png" />
     <Content Include="Library\Images\clipboard.png" />
     <Content Include="Library\Images\download-white.png" />
     <Content Include="Library\Images\download.png" />
+    <Content Include="Library\Images\image.png" />
     <Content Include="Library\Images\leftlogo-red.png" />
     <Content Include="Library\Images\leftlogo-white.png" />
     <Content Include="Library\Images\lock-white.png" />
