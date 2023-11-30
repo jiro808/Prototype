@@ -282,7 +282,7 @@
                                             <label for="appointmentDate">Select Date:</label>
                                             <input type="date" id="appointmentDate" name="appointmentDate" />
                                             <label for="appointmentTime">Select Time:</label>
-                                            <input type="time" id="appointmentTime" name="appointmentTime" />
+                                            <input type="time" id="appointmentTime" name="appointmentTime" min="8:00" max="14:00" />
                                         </div>
                                         <div>
                                             <img src="../../Library/Images/appside.jpg"  height="420" width="420"/>
@@ -492,6 +492,13 @@
             // Trigger the setTuition function to recalculate with the new discount
             setTuition();
         }
+        // Get the current date and time
+        var currentDate = new Date();
+        var currentDateString = currentDate.toISOString().split('T')[0];
+
+        // Set the min attribute for the date input
+        document.getElementById('appointmentDate').min = currentDateString;
+
         // Initial display
         showStep(currentStep);
     </script>
