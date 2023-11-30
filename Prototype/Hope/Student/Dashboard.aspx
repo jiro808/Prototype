@@ -1,29 +1,26 @@
 ﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Prototype.Hope.Student.Dashboard" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <!-- Begin page -->
-   <div class="layout-wrapper landing">
-       <!-- start hero section -->
-     
-       <section class="section pb-0 hero-section" id="hero">
-           <div class="container">
-               <div class="row justify-content-left">
-                   <div class="col-lg-7 col-sm-12">
-                       <div class="mt-lg-12 pt-5">
-                           <h1 class="display-6 fw-semibold mb-3 lh-base">Welcome</h1>
-                           <p class="lead text-muted lh-base">Please check your inbox for payment updates and schedule regarding the pre-registration process for the school year 2023-2024.</p>
-                           <br />
-                           <a href="Inbox.aspx" class="btn btn-primary" style="font-size: 25px;"><i class="ri-mail-fill align-middle ms-1 me-5" style="font-size: 3rem;"></i>INBOX</a>
-                           <div class="gap-3 mt-2">
-                               <asp:HyperLink runat="server" ID="paymentLink" Navigateurl="~/Hope/Student/Payment.aspx" CssClass="btn btn-danger" Style="font-size: 25px;">
-                                       <i class="ri-coins-fill align-middle ms-1" style="font-size: 3rem;"></i>
-                                           PAYMENT<br />REGISTRATION
-                               </asp:HyperLink>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
-   </div>
+    <div class="layout-wrapper landing">
+        <section class="section pb-0 hero-section" id="hero">
+            <div class="container" style="margin: 50px">
+                <div class="row justify-content-left">
+                    <div class="col-lg-7 col-sm-12">
+                        <div class="mt-lg-12 pt-5">
+                            <h1 class="display-6 fw-bold mb-3 lh-base" style="font-size:80px">Welcome</h1>
+                            <p class="lead text-muted lh-base">Please check your inbox for payment updates and schedule regarding the pre-registration process for the school year 2023-2024.</p>
+                            <br />
+                            <a href="Inbox.aspx" class="btn btn-primary" style="font-size: 30px; display: flex; width: 350px; align-items: center; height: 140px; gap: 77px; padding-left: 40px">
+                                <img src="../../Library/Images/mail.png" height="80" />INBOX</a>
+                            <br />
+                            <a href="Payment.aspx" class="btn btn-danger" style="font-size: 25px; display: flex; width: 350px; align-items: center; height: 140px; gap: 20px; padding-left: 40px;">
+                                <img src="../../Library/Images/reg.png" height="80" />
+                                PAYMENT REGISTRATION
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </asp:Content>
