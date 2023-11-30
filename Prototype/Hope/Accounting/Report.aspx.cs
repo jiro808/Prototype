@@ -13,17 +13,18 @@ namespace Prototype.Hope.Accounting
     public partial class Report : System.Web.UI.Page
     {
         //string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
-        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=Prototype;User ID=sa;Password=123";
+        string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                string sqlQuery = "SELECT [date], [student_id], [mode_of_payment], [student_name], [tuition_fee], [miscellaneuos], [amount], [discount], [type], [school_fee], [total_amount], [downpayment], [schedule_of_fees], [payment_status] FROM [Transaction_Report]";
+                //string sqlQuery = "SELECT [date], [student_id], [mode_of_payment], [student_name], [tuition_fee], [miscellaneuos], [amount], [discount], [type], [school_fee], [total_amount], [downpayment], [schedule_of_fees], [payment_status] FROM [Transaction_Report]";
                 //string sqlQuery = "SELECT A.date AS AppointmentDate, S.student_id, S.student_name, P.method, P.tuition, P.miscellaneous, P.total, P.discount, P.discount_type, P.final_total, P.downpayment, P.schedule_of_fees FROM Appointment A JOIN Student S ON A.student_id = S.student_id JOIN Payment P ON S.student_id = P.student_id;";
 
-                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                string query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.CommandType = CommandType.Text;
 
@@ -81,18 +82,18 @@ namespace Prototype.Hope.Accounting
                 string query;
                 if (filterValue == "All")
                 {
-                    query = "SELECT * FROM Transaction_Report";
+                    query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id";
                 }
                 else
                 {
-                    query = "SELECT * FROM Transaction_Report WHERE mode_of_payment = @mode_of_payment";
+                    query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id WHERE Payment.method = @method";
                 }
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     if (filterValue != "All")
                     {
-                        command.Parameters.AddWithValue("@mode_of_payment", filterValue);
+                        command.Parameters.AddWithValue("@method", filterValue);
                     }
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -122,18 +123,18 @@ namespace Prototype.Hope.Accounting
                 string query;
                 if (filterValue == "All")
                 {
-                    query = "SELECT * FROM Transaction_Report";
+                    query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id";
                 }
                 else
                 {
-                    query = "SELECT * FROM Transaction_Report WHERE schedule_of_fees = @schedule_of_fees";
+                    query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id WHERE Payment.schedule = @schedule";
                 }
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     if (filterValue != "All")
                     {
-                        command.Parameters.AddWithValue("@schedule_of_fees", filterValue);
+                        command.Parameters.AddWithValue("@schedule", filterValue);
                     }
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))

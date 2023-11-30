@@ -59,7 +59,7 @@
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_grade_level">Grade Level</label>
                                                     <select id="grade_level" name="grade_level" type="text" class="form-control" required="">
-                                                        <option value="option1" disabled selected>Select Your Grade Level</option>
+                                                        <option value="" disabled selected>Select Your Grade Level</option>
                                                         <option value="Nursery">Nursery</option>
                                                         <option value="Kinder">Kinder</option>
                                                         <option value="Grade 1">Grade 1</option>
@@ -78,7 +78,7 @@
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_status">Status</label>
                                                     <select id="stud_status" name="stud_status" type="text" class="form-control" required="">
-                                                        <option value="option1" disabled selected>Select Your Status</option>
+                                                        <option value="" disabled selected>Select Your Status</option>
                                                         <option value="New Student">New Student</option>
                                                         <option value="Old Student">Old Student</option>
                                                         <option value="Trasferee">Transferee Student</option>
@@ -205,10 +205,12 @@
                                             </div>
                                             <div class="form-section">
                                                 <h3>Payment Method</h3>
-                                                <select name="payment_method" id="payment-method-select">
+                                                <select name="payment_method" id="payment-method-select" required="">
+                                                    <option value="" disabled selected>Select Payment Method</option>
                                                     <option value="Cash">Cash</option>
                                                     <option value="Gcash">Gcash</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please Select Payment Method</div>
                                             </div>
                                             <div class="fee-details">
                                                 <div class="detail">
@@ -226,8 +228,8 @@
                                             </div>
                                             <div class="form-section">
                                                 <h3>Discount Offers</h3>
-                                                <select name="discount_offers" id="discount-offers-select" onchange="updateDiscountPercent()">
-                                                    <option value="option1" disabled selected>Select Discount Offers</option>
+                                                <select name="discount_offers" id="discount-offers-select" required="" onchange="updateDiscountPercent()">
+                                                    <option value="" disabled selected>Select Discount Offers</option>
                                                     <option value="New Student">New Student Discount</option>
                                                     <option value="Old Student">Old Student Discount</option>
                                                     <option value="PWD Student">PWD Student Discount</option>
@@ -238,6 +240,7 @@
                                                     <option value="Sibling Student">Sibling Student Discount</option>
                                                     <option value="Employee">Employee Discount</option>
                                                 </select>
+                                                <div class="invalid-feedback">Please Select Discount Offer</div>
                                             </div>
                                             <div class="discount-details">
                                                 <div class="detail">
@@ -246,7 +249,7 @@
                                                 </div>
                                                 <div class="detail">
                                                     <label for="additional_discount">Other Additional Discount:</label>
-                                                    <input type="text" id="additional_discount" name="additional_discount">
+                                                    <input type="text" id="additional_discount" name="additional_discount" placeholder="Administrator should complete this section." readonly="readonly">
                                                 </div>
                                                 <div class="total">
                                                     <label for="total_discount">Total Amount of Discount:</label>

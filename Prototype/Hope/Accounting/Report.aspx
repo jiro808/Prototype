@@ -40,7 +40,7 @@
                 <h3>Transaction Report</h3>
                 <div style="margin-top: 80px; margin-bottom: 20px">
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
-                        <input type="radio" class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off" checked>
+                        <input type="radio" class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off" checked style="width: 20px">
                         <label class="btn btn-outline-primary" for="btnradio7" style="border-radius: 20px 0 0 20px">Daily Transaction</label>
                         <input type="radio" class="btn-check" name="btnradio3" id="btnradio8" autocomplete="off">
                         <label class="btn btn-outline-primary" for="btnradio8" style="border-radius: 0 20px 20px 0">Past Transaction</label>
@@ -65,8 +65,7 @@
                 <h4>Shedule of Fee</h4>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 90%; margin: 20px">
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="rbl_SelectedIndexChanged" RepeatDirection="Horizontal" Width="100%">
-                        <asp:ListItem Text="Monthly" Value="Monthly" />
-                        <asp:ListItem Text="Quarterly" Value="Quarterly" />
+                        <asp:ListItem Text="Partial Payment" Value="Partial Payment" />
                         <asp:ListItem Text="Full Payment" Value="Full Payment" />
                     </asp:RadioButtonList>
                 </div>
@@ -91,21 +90,21 @@
             </tr>
             <asp:Repeater ID="ReportRepeater" runat="server">
                 <ItemTemplate>
-                    <tr style="text-align: center" class='<%# Eval("mode_of_payment","schedule_of_fees")%>'>
+                    <tr style="text-align: center" class='<%# Eval("method","schedule")%>'>
                         <td><%# Eval("date", "{0:MM-dd-yyyy}") %></td>
                         <td><%# Eval("student_id") %></td>
-                        <td><%# Eval("student_name") %></td>
-                        <td><%# Eval("mode_of_payment") %></td>
-                        <td><%# Convert.ToDecimal(Eval("total_amount")).ToString("N2") %></td>
-                        <td><%# Convert.ToDecimal(Eval("miscellaneuos")).ToString("N2") %></td>
-                        <td><%# Convert.ToDecimal(Eval("amount")).ToString("N2") %></td>
+                        <td><%# Eval("name") %></td>
+                        <td><%# Eval("method") %></td>
+                        <td><%# Convert.ToDecimal(Eval("tuition")).ToString("N2") %></td>
+                        <td><%# Convert.ToDecimal(Eval("miscellaneous")).ToString("N2") %></td>
+                        <td><%# Convert.ToDecimal(Eval("total")).ToString("N2") %></td>
                         <td><%# Convert.ToDecimal(Eval("discount")).ToString("0") + "%" %></td>
-                        <td><%# Eval("type") %></td>
-                        <td><%# Convert.ToDecimal(Eval("school_fee")).ToString("N2") %></td>
-                        <td><%# Convert.ToDecimal(Eval("total_amount")).ToString("N2") %></td>
+                        <td><%# Eval("discount_type") %></td>
+                        <td><%# Convert.ToDecimal(Eval("schoolfee")).ToString("N2") %></td>
+                        <td><%# Convert.ToDecimal(Eval("final_total")).ToString("N2") %></td>
                         <td><%# Convert.ToDecimal(Eval("downpayment")).ToString("N2") %></td>
-                        <td><%# Eval("schedule_of_fees") %></td>
-                        <td><%# Eval("payment_status") %></td>
+                        <td><%# Eval("schedule") %></td>
+                        <td><%# Eval("status") %></td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>

@@ -91,7 +91,7 @@ namespace Prototype.Hope.Student
 
                         int existingAppointments = (int)countCommand.ExecuteScalar();
 
-                        if (existingAppointments < 10)
+                        if (existingAppointments < 10 && DateTime.Parse(appointmentDate) >= DateTime.Now)
                         {
 
                             string STUD = "INSERT INTO Student VALUES (@name, @grade_level, @status, @address, @contact_no, @email, @father_name, @father_occupation, @father_contact, @father_email, @mother_name, @mother_occupation, @mother_contact, @mother_email, @guardian_name, @guardian_occupation, @guardian_contact, @guardian_email); SELECT SCOPE_IDENTITY();";
@@ -121,7 +121,7 @@ namespace Prototype.Hope.Student
 
                                 int studentId = Convert.ToInt32(command.ExecuteScalar());
 
-                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount,  final_total) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @final_total); SELECT SCOPE_IDENTITY();";
+                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount,  final_total, downpayment) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @final_total, @downpayment); SELECT SCOPE_IDENTITY();";
                                 using (SqlCommand command2 = new SqlCommand(PAY, connection))
                                 {
 
@@ -134,31 +134,41 @@ namespace Prototype.Hope.Student
                                     command2.Parameters.AddWithValue("@discount_type", discountoffer);
                                     command2.Parameters.AddWithValue("@discount", discountInt);
                                     command2.Parameters.AddWithValue("@final_total", finaltotalInt);
+                                    command2.Parameters.AddWithValue("@downpayment", 5000);
 
                                     int paymentId = Convert.ToInt32(command2.ExecuteScalar());
 
-                                    string TRA = "INSERT INTO [Transaction] (date, student_id, payment_id) VALUES (@date, @student_id, @payment_id)";
+                                    string TRA = "INSERT INTO [Transaction] VALUES (@date, @student_id, @payment_id, @status)";
                                     using (SqlCommand command3 = new SqlCommand(TRA, connection))
                                     {
 
                                         command3.Parameters.AddWithValue("@date", appointmentDate);
                                         command3.Parameters.AddWithValue("@student_id", studentId);
                                         command3.Parameters.AddWithValue("@payment_id", paymentId);
+                                        if (paymentschedule == "Partial Payment")
+                                        {
+                                            command3.Parameters.AddWithValue("@status", "Pending");
+                                        }
+                                        else if (paymentschedule == "Full Payment")
+                                        {
+                                            command3.Parameters.AddWithValue("@status", "Pending");
+                                        }
                                         command3.ExecuteNonQuery();
 
                                     }
                                 }
 
-                                string APP = "INSERT INTO Appointment (student_id, date, time) VALUES (@student_id, @date, @time)";
+                                string APP = "INSERT INTO Appointment VALUES (@student_id, @date, @time, @action)";
                                 using (SqlCommand commandAPP = new SqlCommand(APP, connection))
                                 {
                                     commandAPP.Parameters.AddWithValue("@student_id", studentId);
                                     commandAPP.Parameters.AddWithValue("@date", appointmentDate);
                                     commandAPP.Parameters.AddWithValue("@time", appointmentTime);
+                                    commandAPP.Parameters.AddWithValue("@action", "Pending");
                                     commandAPP.ExecuteNonQuery();
                                 }
 
-                                string ODB = "INSERT INTO OverdueBalance (student_id, date, total, due, status) VALUES (@student_id, @date, @total, @due, @status)";
+                                string ODB = "INSERT INTO OverdueBalance VALUES (@student_id, @date, @total, @due, @status)";
                                 using (SqlCommand command4 = new SqlCommand(ODB, connection))
                                 {
                                     command4.Parameters.AddWithValue("@student_id", studentId);
@@ -182,16 +192,13 @@ namespace Prototype.Hope.Student
                         }
                         else
                         {
-                            Response.Write("<script>alert('Hello, " + studname + " Please Retry an select another Appointment Date!'); window.location.href='Payment.aspx';</script>");
+                            Response.Write("<script>alert('Hello, " + studname + " Please Retry and select another Appointment Date either its already full or that day is passed'); window.location.href='Payment.aspx';</script>");
                         }
                     }
 
                     Response.Write("<script>alert('Hello, " + studname + " Payment Registration Success!'); window.location.href='Dashboard.aspx';</script>");
-
                 }
             }
-
-
             catch (Exception ex)
             {
                 // Log the exception details (ex.Message) for debugging purposes
