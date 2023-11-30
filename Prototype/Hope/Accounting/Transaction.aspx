@@ -1,24 +1,94 @@
 ﻿<%@ Page Title="Transaction" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Transaction.aspx.cs" Inherits="Prototype.Hope.Accounting.Transaction" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="SqlDataSource1">
+     <div class="container-fluid" style="padding: 20px; padding-top: 50px">
+     <div class="container-fluid" style="background-color: ghostwhite; margin-top: 10px; padding: 20px">
+    <asp:GridView ID="GridView1"  runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" Width="100%" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
         <Columns>
-            <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
-            <asp:BoundField DataField="student_id" HeaderText="student_id" InsertVisible="False" ReadOnly="True" SortExpression="student_id" />
-            <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-            <asp:BoundField DataField="method" HeaderText="method" SortExpression="method" />
-            <asp:BoundField DataField="tuition" HeaderText="tuition" SortExpression="tuition" />
-            <asp:BoundField DataField="miscellaneous" HeaderText="miscellaneous" SortExpression="miscellaneous" />
-            <asp:BoundField DataField="total" HeaderText="total" SortExpression="total" />
-            <asp:BoundField DataField="discount" HeaderText="discount" SortExpression="discount" />
-            <asp:BoundField DataField="discount_type" HeaderText="discount_type" SortExpression="discount_type" />
-            <asp:BoundField DataField="schoolfee" HeaderText="schoolfee" SortExpression="schoolfee" />
-            <asp:BoundField DataField="final_total" HeaderText="final_total" SortExpression="final_total" />
-            <asp:BoundField DataField="downpayment" HeaderText="downpayment" SortExpression="downpayment" />
-            <asp:BoundField DataField="schedule" HeaderText="schedule" SortExpression="schedule" />
-            <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
-        </Columns>
+            <asp:TemplateField HeaderText="Date">
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("date") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Student ID">
+                <ItemTemplate>
+                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("student_id") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Name">
+                <ItemTemplate>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("name") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Method">
+                <ItemTemplate>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("method") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Tuition">
+                <ItemTemplate>
+                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("tuition") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Miscellaneous">
+                <ItemTemplate>
+                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("miscellaneous") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Total">
+                <ItemTemplate>
+                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("total") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Discount">
+                <ItemTemplate>
+                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("discount") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Type">
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("discount_type") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="School Fee">
+                <ItemTemplate>
+                    <asp:Label ID="Label9" runat="server" Text='<%# Eval("final_total") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Final Total">
+                <ItemTemplate>
+                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("schoolfee") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Downpayment">
+                <ItemTemplate>
+                    <asp:Label ID="Label11" runat="server" Text='<%# Eval("downpayment") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Schedule">
+                <ItemTemplate>
+                    <asp:Label ID="Label12" runat="server" Text='<%# Eval("schedule") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+               <asp:TemplateField HeaderText="Status">
+        <EditItemTemplate>
+            <asp:DropDownList ID="DropDownList1" runat="server" SelectedValue='<%# Eval("status") %>' Style="font-size: 20px">
+                <asp:ListItem>Paid</asp:ListItem>
+                <asp:ListItem>Unpaid</asp:ListItem>
+                <asp:ListItem>Pending</asp:ListItem>
+            </asp:DropDownList>
+        </EditItemTemplate>
+        <ItemTemplate>
+            <asp:Label ID="Label7" runat="server" Text='<%# Eval("status") %>' Style="font-size: 20px"></asp:Label>
+        </ItemTemplate>
+    </asp:TemplateField>
+    <asp:CommandField ShowEditButton="True" />
+</Columns>
+<EditRowStyle BackColor="lightblue" ForeColor="black"></EditRowStyle>
+<HeaderStyle BackColor="#0d6efd" ForeColor="White" Font-Size="22px" Height="35px"/>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SIA_BILLINGConnectionString %>" SelectCommand="SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id"></asp:SqlDataSource>
+         </div>
+    </div>
 </asp:Content>
