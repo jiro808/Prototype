@@ -17,7 +17,7 @@ namespace Prototype.Hope.Accounting
         {
             if(!IsPostBack)
             {
-                binddata();
+                binddata();       
             }
 
         }
@@ -27,7 +27,6 @@ namespace Prototype.Hope.Accounting
             {
         connection.Open();
             string query = "SELECT OB.invoice_no, S.student_id, S.name, OB.date, OB.total, OB.due, OB.status FROM OverdueBalance AS OB INNER JOIN Student AS S ON OB.student_id = S.student_id  WHERE  OB.status LIKE @status";
-
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     if (rblFilter.SelectedValue == "All")
@@ -55,7 +54,7 @@ namespace Prototype.Hope.Accounting
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT OB.invoice_no, S.student_id, S.name, OB.date, OB.total, OB.due, OB.status FROM OverdueBalance AS OB INNER JOIN Student AS S ON OB.student_id = S.student_id  WHERE  S.student_id LIKE @studentid";
+                string query = "SELECT OB.invoice_no, S.student_id, S.name, OB.date, OB.total, OB.due, OB.status FROM OverdueBalance AS OB INNER JOIN Student AS S ON OB.student_id = S.student_id  WHERE  (S.student_id LIKE @studentid OR S.name LIKE @studentid)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
