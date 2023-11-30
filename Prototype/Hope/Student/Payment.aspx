@@ -8,10 +8,12 @@
                 background-size: cover;
                 padding: 60px 0; /* Adjust the padding as needed */
             }
+
                 .hero-section .container {
                     background: rgba(255, 255, 255, 0.0); /* Add a semi-transparent white background to the container */
                     padding: 20px;
                 }
+
             #hero {
                 height: 90.8vh; /* Set the height to 100% of the viewport height */
                 margin: 0; /* Remove margin */
@@ -184,7 +186,6 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-start gap-3 mt-4">
-
                                         <a href="Dashboard.aspx" type="button" class="btn btn-light btn-label previestab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back to Dashboard</a>
                                         <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="steparrow-description-info-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Go to School Fees</button>
                                     </div>
@@ -201,7 +202,6 @@
                                                     <asp:ListItem>Partial Payment</asp:ListItem>
                                                     <asp:ListItem>Full Payment</asp:ListItem>
                                                 </asp:RadioButtonList>
-
                                             </div>
                                             <div class="form-section">
                                                 <h3>Payment Method</h3>
@@ -368,14 +368,12 @@
             // Get the selected values
             var selectedDate = document.getElementById("appointmentDate").value;
             var selectedTime = document.getElementById("appointmentTime").value;
-
             // Perform further actions with the selected values
             console.log("Selected Date: " + selectedDate);
             console.log("Selected Time: " + selectedTime);
-
             // You can send the values to the server, update the UI, etc.
         }
-            // Function to set tuition based on selected grade level
+        // Function to set tuition based on selected grade level
         function setTuition() {
             var gradeLevel = document.getElementById("grade_level").value;
             var tuitionInput = document.getElementById("tuition");
@@ -383,17 +381,14 @@
             var tuition3Input = document.getElementById("total");
             var discountPercentInput = document.getElementById("discount_percent");
             var totalFinalInput = document.getElementById("total_final");
-
             // Default tuition and miscellaneous values
             var tuition = 0;
             var miscellaneous = 18200;
             var fee = 9100;
-
             // Set tuition based on grade level
             switch (gradeLevel) {
                 case "Nursery":
-                    tuition = 25860; 
-                   
+                    tuition = 25860;
                     break;
                 case "Kinder":
                     tuition = 31397;
@@ -405,19 +400,19 @@
                     tuition = 31330;
                     break;
                 case "Grade 3":
-                    tuition = 31330; 
+                    tuition = 31330;
                     break;
                 case "Grade 4":
-                    tuition = 33596; 
+                    tuition = 33596;
                     break;
                 case "Grade 5":
-                    tuition = 33596; 
+                    tuition = 33596;
                     break;
                 case "Grade 6":
-                    tuition = 33740; 
+                    tuition = 33740;
                     break;
                 case "Grade 7":
-                    tuition = 31109; 
+                    tuition = 31109;
                     break
                 case "Grade 8":
                     tuition = 31109;
@@ -429,23 +424,17 @@
                     tuition = 41012;
                     break;
                 // Add more cases for other grade levels if needed
-
                 // Default case (if grade level is not specified)
                 default:
                     tuition = 0; // Set the default tuition value
                     break;
             }
-
-
             // Calculate total with miscellaneous
             var total1 = tuition + miscellaneous + fee;
-
             // Get discount percentage
             var discountPercent = parseFloat(discountPercentInput.value) || 0;
-
             // Calculate discounted tuition
-            var discountedTuition = (total1 -(total1 * (discountPercent / 100) ));
-
+            var discountedTuition = (total1 - (total1 * (discountPercent / 100)));
             // Format and update input values
             tuitionInput.value = tuition.toFixed();
             tuition2Input.value = miscellaneous.toFixed();
@@ -453,27 +442,16 @@
             // Display the total with discount in the "total_final" element
             totalFinalInput.value = discountedTuition.toFixed();
         }
-
-      
-
         // Attach the setTuition function to the onchange event of the grade level select
         document.getElementById("grade_level").onchange = setTuition;
-
         // Attach the updateDiscountPercent function to the onchange event of the discount offers select
         document.getElementById("discount-offers-select").onchange = updateDiscountPercent;
-
         // Attach the setTuition function to the onchange event of the discount percentage input
         document.getElementById("discount_percent").oninput = setTuition;
-        
-
-
-
         function updateDiscountPercent() {
             // Get the dropdown and input elements
             var discountOffersSelect = document.getElementById("discount-offers-select");
             var discountPercentInput = document.getElementById("discount_percent");
-          
-
             // Set the discount_percent based on the selected option
             switch (discountOffersSelect.value) {
                 case "New Student":
@@ -503,7 +481,6 @@
                 case "Employee":
                     discountPercentInput.value = 10;
                     break;
-
                 // Add cases for other options
                 default:
                     // Set a default value or clear the input if needed
@@ -512,11 +489,7 @@
             }
             // Trigger the setTuition function to recalculate with the new discount
             setTuition();
-
         }
-
-
-
         // Initial display
         showStep(currentStep);
     </script>
