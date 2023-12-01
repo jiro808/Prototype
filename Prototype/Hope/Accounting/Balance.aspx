@@ -3,7 +3,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid" style="padding: 20px; padding-top: 50px">
         <div class="container-fluid" style="background-color: ghostwhite; padding: 20px">
-            <div class="col">
+            <div class="col" style="display: flex; align-items: center;">
+                    <asp:LinkButton ID="btnBack" runat="server" OnClientClick="window.location.href='Dashboard.aspx'; return false;">
+<img src="../../Library/Images/left-arrow.png"   height="50" alt="Back" />
+    </asp:LinkButton>
                 <h3>Overdue Balance</h3>
             </div>
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 50%; margin: 20px">

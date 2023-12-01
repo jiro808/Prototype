@@ -2,7 +2,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
 
     <div style="padding-left: 50px; padding-top: 20px;">
-        <img src="../../Library/Images/back.png" height="50"/>
+        <asp:LinkButton ID="btnBack" runat="server" OnClientClick="window.location.href='Dashboard.aspx'; return false;">
+    <img src="../../Library/Images/left-arrow.png"   height="50" alt="Back" />
+        </asp:LinkButton>
     </div>
 
     <div class="auto-style1" style="margin: 120px; margin-bottom:20px; margin-top:0; padding: 20px">

@@ -1,11 +1,15 @@
 ﻿<%@ Page Title="Announcement" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Announcement.aspx.cs" Inherits="Prototype.Hope.Accounting.Annoucement" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid" style="padding: 20px; padding-top: 50px; display: flex; gap: 20px; flex-direction: column;">
         <div class="container-fluid" style="background-color: ghostwhite; padding: 20px; display: flex; justify-content: space-between">
-            <div style="display: flex; align-items: center; margin-left: 50px;">
+
+            <div style="display: flex; align-items: center">
+                <div style="padding-right: 50px">
+                    <asp:LinkButton ID="btnBack" runat="server" OnClientClick="window.location.href='Dashboard.aspx'; return false;">
+<img src="../../Library/Images/left-arrow.png"   height="50" alt="Back" />
+                    </asp:LinkButton>
+                </div>
                 <img src="../../Library/Images/megaphone.png" style="width: 100px; height: 100px" />
                 <div style="margin-left: 30px">
                     <h4>ANNOUNCEMENT</h4>
@@ -30,7 +34,7 @@
                         <span id="Body_Label2">Subject</span>
                         <asp:TextBox ID="textbox" runat="server" Width="50%"></asp:TextBox>
                     </div>
-                    <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" style="width: 100%; height: 30vh; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Style="width: 100%; height: 30vh; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px;"></asp:TextBox>
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 20px; padding: 20px;">
                     <asp:Button ID="Button2" runat="server" Text="Save as Draft" OnClick="Button2_Click" />
