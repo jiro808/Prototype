@@ -144,23 +144,12 @@ namespace Prototype.Hope.Student
                                     commandAPP.Parameters.AddWithValue("@action", "Pending");
                                     commandAPP.ExecuteNonQuery();
                                 }
-                                string ODB = "INSERT INTO OverdueBalance VALUES (@student_id, @date, @total, @due, @status)";
+                                string ODB = "INSERT INTO OverdueBalance VALUES (@student_id, @date, @total, @due)";
                                 using (SqlCommand commandODB = new SqlCommand(ODB, connection))
                                 {
                                     commandODB.Parameters.AddWithValue("@student_id", studentId);
                                     commandODB.Parameters.AddWithValue("@date", appointmentDate);
                                     commandODB.Parameters.AddWithValue("@total", finaltotalInt);
-
-                                    if (paymentschedule == "Partial Payment")
-                                    {
-                                        commandODB.Parameters.AddWithValue("@due", resultDueDate);
-                                        commandODB.Parameters.AddWithValue("@status", "Pending");
-                                    }
-                                    else if (paymentschedule == "Full Payment")
-                                    {
-                                        commandODB.Parameters.AddWithValue("@due", appointmentDate);
-                                        commandODB.Parameters.AddWithValue("@status", "Pending");
-                                    }
                                     commandODB.ExecuteNonQuery();
                                 }
                             }

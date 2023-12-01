@@ -19,7 +19,10 @@
                 <asp:Button ID="Button3" runat="server" Text="Search" OnClick="Button3_Click" Font-Size="20px" />
                 <asp:TextBox ID="TextBox1" runat="server" placeholder="Enter Student ID or Name" Width="25%" Font-Size="20px"></asp:TextBox>
             </div>
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="invoice_no" Width="100%" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" Width="100%" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
                 <Columns>
                     <asp:TemplateField HeaderText="Invoice No.">
                         <ItemTemplate>
@@ -68,6 +71,21 @@
                 <EditRowStyle BackColor="lightblue" ForeColor="black"></EditRowStyle>
                 <HeaderStyle BackColor="#0d6efd" ForeColor="White" Font-Size="22px" Height="35px"/>
             </asp:GridView>
+        </ContentTemplate>
+</asp:UpdatePanel>
         </div>
     </div>
+    <script type="text/javascript">
+    var scrollPosition;
+
+    function pageLoad(sender, args) {
+        // Save the scroll position before postback
+        scrollPosition = window.scrollY;
+    }
+
+    function restoreScrollPosition() {
+        // Restore the scroll position after postback
+        window.scrollTo(0, scrollPosition);
+    }
+    </script>
 </asp:Content>
