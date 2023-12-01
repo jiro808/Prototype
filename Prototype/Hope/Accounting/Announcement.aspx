@@ -39,7 +39,6 @@
                 <div style="display: flex; justify-content: flex-end; gap: 20px; padding: 20px;">
                     <asp:Button ID="Button2" runat="server" Text="Save as Draft" OnClick="Button2_Click" />
                     <asp:Button ID="Button3" runat="server" Text="Announce" OnClick="Button3_Click" />
-                    <asp:Label ID="lblErrorMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
                 </div>
             </div>
             <div style="padding: 20px; display: flex; justify-content: center; background-color: cornflowerblue" class="col-4">
@@ -47,7 +46,7 @@
                     <h4>Recent Announcement</h4>
                 </div>
                 <div>
-                    <asp:Table>
+                    <asp:Table runat="server">
                     </asp:Table>
                 </div>
             </div>

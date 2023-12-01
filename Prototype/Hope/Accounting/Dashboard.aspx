@@ -71,25 +71,23 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="col-sm" style="background-color: ghostwhite; padding: 20px; padding-bottom: 0; border-radius: 20px">
                 <h3>Recent</h3>
-                <a class="inner-div" href="Transaction.aspx" >
+                <a class="inner-div" href="Report.aspx" >
                     <table border="1" width="100%" class="table caption-top">
                         <tr style="text-align: center">
                             <th>Date of Transaction</th>
                             <th>Student ID</th>
                             <th>Student Name</th>
+                            <th>Grade</th>
                         </tr>
                         <asp:Repeater ID="ReportRepeater" runat="server">
                             <ItemTemplate>
                                 <tr style="text-align: center">
                                     <td><%# Eval("date") %></td>
                                     <td><%# Eval("student_id") %></td>
-                                    <td><%# Eval("student_name") %></td>
+                                    <td><%# Eval("name") %></td>
+                                    <td><%# Eval("grade_level") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>

@@ -132,7 +132,26 @@ namespace Prototype.Hope.Student
 
                                         // Now you can use 'transactionId' in subsequent operations
                                         // For example, you can display it or use it in another insert operation.
-                                        
+                                        string ODB = "INSERT INTO OverdueBalance (student_id, date, total, due) VALUES (@student_id, @date, @total, @due)";
+                                        using (SqlCommand commandODB = new SqlCommand(ODB, connection))
+                                        {
+
+                                            commandODB.Parameters.AddWithValue("@student_id", studentId);
+                                            commandODB.Parameters.AddWithValue("@date", appointmentDate);
+                                            commandODB.Parameters.AddWithValue("@total", finaltotalInt);
+
+
+                                            if (paymentschedule == "Partial Payment")
+                                            {
+                                                commandODB.Parameters.AddWithValue("@due", resultDueDate);
+                                            }
+                                            else if (paymentschedule == "Full Payment")
+                                            {
+                                                commandODB.Parameters.AddWithValue("@due", appointmentDate);
+                                            }
+
+                                            commandODB.ExecuteNonQuery();
+                                        }
                                     }
                                 }
                                 string APP = "INSERT INTO Appointment VALUES (@student_id, @date, @time, @action)";
@@ -143,14 +162,6 @@ namespace Prototype.Hope.Student
                                     commandAPP.Parameters.AddWithValue("@time", appointmentTime);
                                     commandAPP.Parameters.AddWithValue("@action", "Pending");
                                     commandAPP.ExecuteNonQuery();
-                                }
-                                string ODB = "INSERT INTO OverdueBalance VALUES (@student_id, @date, @total, @due)";
-                                using (SqlCommand commandODB = new SqlCommand(ODB, connection))
-                                {
-                                    commandODB.Parameters.AddWithValue("@student_id", studentId);
-                                    commandODB.Parameters.AddWithValue("@date", appointmentDate);
-                                    commandODB.Parameters.AddWithValue("@total", finaltotalInt);
-                                    commandODB.ExecuteNonQuery();
                                 }
                             }
                             ScriptManager.RegisterStartupScript(this, GetType(), "alert", "swal('Successful!', 'Registration Complete', 'success')", true);
