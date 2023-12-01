@@ -103,7 +103,7 @@ namespace Prototype.Hope.Student
                                     commandP.Parameters.AddWithValue("@schedule", paymentschedule);
                                     commandP.Parameters.AddWithValue("@method", paymentmethod);
                                     commandP.Parameters.AddWithValue("@tuition", tuitionInt);
-                                    commandP.Parameters.AddWithValue("@miscellaneous", miscellaneousInt);
+                                    commandP.Parameters.AddWithValue("@miscellaneous", 15800);
                                     commandP.Parameters.AddWithValue("@total", totalInt);
                                     commandP.Parameters.AddWithValue("@schoolfee", 7900);
                                     commandP.Parameters.AddWithValue("@discount_type", discountoffer);
