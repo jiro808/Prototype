@@ -51,7 +51,7 @@
                                                 <h4>STUDENT DETAILS</h4>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_name">Name</label>
-                                                    <input type="text" class="form-control" id="stud_name" name="stud_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                                    <input type="text" class="form-control" id="stud_name" name="stud_name" placeholder="Last Name, First Name" required="">
                                                     <div class="invalid-feedback">Please enter a Name</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
@@ -90,12 +90,12 @@
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_contact_no">Contact Number</label>
-                                                    <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
+                                                    <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="09123456789" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                                     <div class="invalid-feedback">Please enter a Valid Contact Number</div>
                                                 </div>
                                                 <div class="mb-3 col-lg-4">
                                                     <label class="form-label" for="stud_email_add">Email Address</label>
-                                                    <input type="email" class="form-control" id="stud_email_add" name="stud_email_add" placeholder="Email Address" required="">
+                                                    <input type="email" class="form-control" id="stud_email_add" name="stud_email_add" placeholder="name@email.com" required="">
                                                     <div class="invalid-feedback">Please enter a Email Address</div>
                                                 </div>
                                             </div>
@@ -124,62 +124,62 @@
                                     <div class="row">
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_name">Name of Father</label>
-                                            <input type="text" class="form-control" id="fth_name" name="fth_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="fth_name" name="fth_name" placeholder="Last Name, First Name" required="">
                                             <div class="invalid-feedback">Please enter a Name of Father</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="fth_occupation" name="fth_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="fth_occupation" name="fth_occupation" placeholder="Type Here..." required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="fth_contact_no" name="fth_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
+                                            <input type="text" class="form-control" id="fth_contact_no" name="fth_contact_no" placeholder="09123456789" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="fth_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="fth_email_add" name="fth_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="fth_email_add" name="fth_email_add" placeholder="name@email.com" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_name">Name of Mother</label>
-                                            <input type="text" class="form-control" id="mth_name" name="mth_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="mth_name" name="mth_name" placeholder="Last Name, First Name" required="">
                                             <div class="invalid-feedback">Please enter a Name of Mother</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="mth_occupation" name="mth_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="mth_occupation" name="mth_occupation" placeholder="Type Here..." required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="mth_contact_no" name="mth_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
+                                            <input type="text" class="form-control" id="mth_contact_no" name="mth_contact_no" placeholder="09123456789" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="mth_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="mth_email_add" name="mth_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="mth_email_add" name="mth_email_add" placeholder="name@email.com" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_name">Name of Guardian</label>
-                                            <input type="text" class="form-control" id="grd_name" name="grd_name" placeholder="Last Name, First Name, Middle Initial" required="">
+                                            <input type="text" class="form-control" id="grd_name" name="grd_name" placeholder="Last Name, First Name" required="">
                                             <div class="invalid-feedback">Please enter a Name of Guardian</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_occupation">Occupation</label>
-                                            <input type="text" class="form-control" id="grd_occupation" name="grd_occupation" placeholder="Occupation" required="">
+                                            <input type="text" class="form-control" id="grd_occupation" name="grd_occupation" placeholder="Type Here..." required="">
                                             <div class="invalid-feedback">Please enter a Occupation</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_contact_no">Contact Number</label>
-                                            <input type="text" class="form-control" id="grd_contact_no" name="grd_contact_no" placeholder="Contact Number" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
+                                            <input type="text" class="form-control" id="grd_contact_no" name="grd_contact_no" placeholder="09123456789" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                             <div class="invalid-feedback">Please enter a Contact Number</div>
                                         </div>
                                         <div class="mb-3 col-lg-3">
                                             <label class="form-label" for="grd_email_add">Email Address</label>
-                                            <input type="email" class="form-control" id="grd_email_add" name="grd_email_add" placeholder="Email Address" required="">
+                                            <input type="email" class="form-control" id="grd_email_add" name="grd_email_add" placeholder="name@email.com" required="">
                                             <div class="invalid-feedback">Please enter a Email Address</div>
                                         </div>
                                     </div>

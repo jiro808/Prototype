@@ -164,11 +164,12 @@ namespace Prototype.Hope.Student
                                     commandAPP.ExecuteNonQuery();
                                 }
                             }
-                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "swal('Successful!', 'Registration Complete', 'success')", true);
+                            ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
                         }
                         else
                         {
-                            Response.Write("<script>alert('Hello " + studname + " Please Retry and select another Appointment Date either its already full or that day is passed');</script>");
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "swal('Failed!', 'Registration Failed', 'warning')", true);
+
                         }
                     }
                 }
