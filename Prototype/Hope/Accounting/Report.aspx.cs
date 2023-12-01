@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.Util;
+using System.Globalization;
 
 namespace Prototype.Hope.Accounting
 {
@@ -37,6 +38,11 @@ namespace Prototype.Hope.Accounting
                         ReportRepeater.DataBind();
                     }
                 }
+                if (!IsPostBack)
+                {
+                    UpdateTotalPendingCount();
+                    UpdateTotalPendingAmount();
+                }
             }
         }
         private DataTable GetFilteredData(string filterValue)
@@ -44,7 +50,7 @@ namespace Prototype.Hope.Accounting
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM Transaction_Report WHERE student_id LIKE '%' + @FilterValue + '%' OR student_name LIKE '%' + @FilterValue + '%'";
+                string query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id WHERE Student.student_id LIKE '%' + @FilterValue + '%' OR Student.name LIKE '%' + @FilterValue + '%'";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@FilterValue", filterValue);
@@ -146,5 +152,46 @@ namespace Prototype.Hope.Accounting
                 }
             }
         }
+        protected void UpdateTotalPendingCount()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM [Transaction] WHERE [Transaction].status = 'Pending'";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    int totalPendingCount = (int)command.ExecuteScalar();
+                    h4pending.InnerText = totalPendingCount.ToString();
+                }
+            }
+        }
+        protected void UpdateTotalPendingAmount()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT SUM(Payment.total) FROM [Transaction] INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id WHERE [Transaction].status = 'Pending'";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    object totalPendingAmount = command.ExecuteScalar();
+
+                    if (totalPendingAmount != DBNull.Value)
+                    {
+                        decimal totalAmount = Convert.ToDecimal(totalPendingAmount);
+
+                        // Specify the culture to use the Philippine Peso symbol
+                        CultureInfo culture = new CultureInfo("en-PH");
+                        h4total.InnerText = totalAmount.ToString("C", culture);
+                    }
+                    else
+                    {
+                        h4total.InnerText = "P 0.00"; // or any default value
+                    }
+                }
+            }
+        }
+
     }
 }

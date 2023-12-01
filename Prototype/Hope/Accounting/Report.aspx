@@ -1,13 +1,18 @@
 ﻿<%@ Page Title="Report" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Report.aspx.cs" Inherits="Prototype.Hope.Accounting.Report" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <div class="auto-style1" style="margin: 20px; padding: 20px">
+
+    <div style="padding-left: 50px; padding-top: 20px;">
+        <img src="../../Library/Images/back.png" height="50"/>
+    </div>
+
+    <div class="auto-style1" style="margin: 120px; margin-bottom:20px; margin-top:0; padding: 20px">
         <div class="row">
             <div class="col">
                 <div class="p-3 border bg-light" style="border-radius: 20px">
                     <a class="inner-div" href="#">
                         <div style="display: flex; width: 100%; height: 100px; flex-direction: column; align-items: center; gap: 20px;">
                             <h5>Bills Awaiting Payment</h5>
-                            <h4>####</h4>
+                             <h4 runat="server" id="h4pending">Loading...</h4>
                         </div>
                     </a>
                 </div>
@@ -17,7 +22,7 @@
                     <a class="inner-div" href="#">
                         <div style="display: flex; width: 100%; height: 100px; flex-direction: column; align-items: center; gap: 20px;">
                             <h5>Total of Awaiting Payment</h5>
-                            <h4>###,###,##</h4>
+                            <h4 runat="server" id="h4total">####</h4>
                         </div>
                     </a>
                 </div>
@@ -40,15 +45,15 @@
                 <h3>Transaction Report</h3>
                 <div style="margin-top: 80px; margin-bottom: 20px">
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
-                        <input type="radio" class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off" checked style="width: 20px">
+                        <input type="radio"  class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off" checked style="width: 20px">
                         <label class="btn btn-outline-primary" for="btnradio7" style="border-radius: 20px 0 0 20px">Daily Transaction</label>
-                        <input type="radio" class="btn-check" name="btnradio3" id="btnradio8" autocomplete="off">
+                        <input type="radio" class="btn-check" name="btnradio3" id="btnradio8"  autocomplete="off">
                         <label class="btn btn-outline-primary" for="btnradio8" style="border-radius: 0 20px 20px 0">Past Transaction</label>
                     </div>
                 </div>
                 <div class="input-group mb-3" style="left: 0px; top: 0px">
                     <asp:Button ID="search" runat="server" Text="Search" OnClick="search_Click" />
-                    <asp:TextBox ID="TextBox1" runat="server" placeholder="Enter Student ID or Name" Width="80%"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" placeholder="Filter by Student ID or Name" Width="80%"></asp:TextBox>
                 </div>
             </div>
             <div class="col">

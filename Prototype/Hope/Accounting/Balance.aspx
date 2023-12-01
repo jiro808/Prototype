@@ -17,7 +17,7 @@
         <div class="container-fluid" style="background-color: ghostwhite; margin-top: 10px; padding: 20px">
             <div class="input-group mb-3" style="left: 0px; top: 0px">
                 <asp:Button ID="Button3" runat="server" Text="Search" OnClick="Button3_Click" Font-Size="20px" />
-                <asp:TextBox ID="TextBox1" runat="server" placeholder="Enter Student ID or Name" Width="25%" Font-Size="20px"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" runat="server" placeholder="Filter by Student ID" Width="25%" Font-Size="20px"></asp:TextBox>
             </div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
            <asp:UpdatePanel ID="UpdatePanel1" runat="server">

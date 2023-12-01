@@ -58,7 +58,7 @@ namespace Prototype.Hope.Accounting
             {
                 connection.Open();
                // string query = "SELECT OB.invoice_no, S.student_id, S.name, OB.date, OB.total, OB.due, OB.status FROM OverdueBalance AS OB INNER JOIN Student AS S ON OB.student_id = S.student_id  WHERE  (S.student_id LIKE @studentid OR S.name LIKE @studentid)";
-                string query = "SELECT OverdueBalance.invoice_no, Student.student_id, Student.name, OverdueBalance.date, OverdueBalance.total, OverdueBalance.due, [Transaction].status FROM OverdueBalance INNER JOIN Student ON OverdueBalance.student_id = Student.student_id INNER JOIN [Transaction] ON Student.student_id = [Transaction].student_id WHERE (Student.student_id LIKE @studentid OR Student.name LIKE @studentid)";
+                string query = "SELECT OverdueBalance.invoice_no, Student.student_id, Student.name, OverdueBalance.date, OverdueBalance.total, OverdueBalance.due, [Transaction].status FROM OverdueBalance INNER JOIN Student ON OverdueBalance.student_id = Student.student_id INNER JOIN [Transaction] ON Student.student_id = [Transaction].student_id WHERE (Student.student_id LIKE @studentid)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@studentid", TextBox1.Text);
