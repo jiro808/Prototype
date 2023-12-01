@@ -1,6 +1,8 @@
-﻿<%@ Page Title="Transaction" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Transaction.aspx.cs" Inherits="Prototype.Hope.Accounting.Transaction" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="StudentList.aspx.cs" Inherits="Prototype.Hope.Accounting.StudentList" %>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-   <div style="padding-left: 50px; padding-top: 20px;">
+       <div style="padding-left: 50px; padding-top: 20px;">
        <asp:LinkButton ID="btnBack" runat="server" OnClientClick="window.location.href='Dashboard.aspx'; return false;">
    <img src="../../Library/Images/left-arrow.png"   height="50" alt="Back" />
        </asp:LinkButton>
@@ -61,4 +63,3 @@
         }
     </style>
 </asp:Content>
-

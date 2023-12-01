@@ -11,7 +11,7 @@ namespace Prototype.Hope.Accounting
 {
 
 
-    public partial class Transaction
+    public partial class StudentList
     {
 
         /// <summary>

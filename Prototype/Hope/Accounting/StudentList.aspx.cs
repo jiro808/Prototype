@@ -9,12 +9,11 @@ using System.Web.UI.WebControls;
 
 namespace Prototype.Hope.Accounting
 {
-    public partial class Transaction : System.Web.UI.Page
+    public partial class StudentList : System.Web.UI.Page
     {
         string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
         protected void Page_Load(object sender, EventArgs e)
         {
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
