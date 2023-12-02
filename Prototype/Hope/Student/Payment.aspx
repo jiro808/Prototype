@@ -286,7 +286,7 @@
                                     <div class="d-flex align-items-start gap-3 mt-4">
                                         <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray">
                                             <img src="../../Library/Images/backgray.png" height="21" width="21" />Back to School Fees</button>
-                                        <asp:Button ID="Button1" class="btn btn-success btn-label right ms-auto nexttab nexttab" runat="server" OnClick="Button1_Click" Text="Submit" />
+                                        <asp:Button ID="Button1" class="btn btn-success btn-label right ms-auto" runat="server" OnClick="Button1_Click" Text="Submit" />
                                     </div>
                                 </div>
                                 <!-- end tab pane -->
