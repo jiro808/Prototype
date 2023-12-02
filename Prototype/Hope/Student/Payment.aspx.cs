@@ -24,7 +24,7 @@ namespace Prototype.Hope.Student
         {
             try
             {
-                
+
                 string studname = Request["stud_name"];
                 string gradelvl = Request["grade_level"];
                 string status = Request["stud_status"];
@@ -76,7 +76,7 @@ namespace Prototype.Hope.Student
                         int existingAppointments = (int)countCommand.ExecuteScalar();
                         if (existingAppointments < 10 && DateTime.Parse(appointmentDate) >= DateTime.Now)
                         {
-                            string STUD = "INSERT INTO Student VALUES (@name, @grade_level, @status, @address, @contact_no, @email, @father_name, @father_occupation, @father_contact, @father_email, @mother_name, @mother_occupation, @mother_contact, @mother_email, @guardian_name, @guardian_occupation, @guardian_contact, @guardian_email); SELECT SCOPE_IDENTITY();";
+                            string STUD = "INSERT INTO Student (name, grade_level, status, address, contact_no, email, father_name, father_occupation, father_contact, father_email, mother_name, mother_occupation, mother_contact, mother_email, guardian_name, guardian_occupation, guardian_contact, guardian_email) VALUES (@name, @grade_level, @status, @address, @contact_no, @email, @father_name, @father_occupation, @father_contact, @father_email, @mother_name, @mother_occupation, @mother_contact, @mother_email, @guardian_name, @guardian_occupation, @guardian_contact, @guardian_email); SELECT SCOPE_IDENTITY();";
                             using (SqlCommand command = new SqlCommand(STUD, connection))
                             {
                                 command.Parameters.AddWithValue("@name", studname);
@@ -165,7 +165,7 @@ namespace Prototype.Hope.Student
                                     commandAPP.ExecuteNonQuery();
                                 }
                             }
-                            ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
+                           // ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
                         }
                         else
                         {
