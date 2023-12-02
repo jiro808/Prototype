@@ -24,6 +24,7 @@ namespace Prototype.Hope.Student
         {
             try
             {
+                
                 string studname = Request["stud_name"];
                 string gradelvl = Request["grade_level"];
                 string status = Request["stud_status"];

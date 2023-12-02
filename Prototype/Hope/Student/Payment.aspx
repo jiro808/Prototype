@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid">
         <style>
@@ -47,14 +50,14 @@
                                 <div class="tab-pane fade active show" id="steparrow-gen-info" role="tabpanel" aria-labelledby="steparrow-gen-info-tab">
                                     <div class="row">
                                         <div class="col-lg-9">
+                                            <h4 style="border-bottom: solid gray 2px; padding-bottom: 15px;">STUDENT DETAILS</h4>
                                             <div class="row">
-                                                <h4>STUDENT DETAILS</h4>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_name">Name</label>
                                                     <input type="text" class="form-control" id="stud_name" name="stud_name" placeholder="Last Name, First Name" required="">
                                                     <div class="invalid-feedback">Please enter a Name</div>
                                                 </div>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_grade_level">Grade Level</label>
                                                     <select id="grade_level" name="grade_level" type="text" class="form-control" required="">
                                                         <option value="" disabled selected>Select Your Grade Level</option>
@@ -73,7 +76,7 @@
                                                     </select>
                                                     <div class="invalid-feedback">Please Select a Grade Level</div>
                                                 </div>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_status">Status</label>
                                                     <select id="stud_status" name="stud_status" type="text" class="form-control" required="">
                                                         <option value="" disabled selected>Select Your Status</option>
@@ -83,43 +86,35 @@
                                                     </select>
                                                     <div class="invalid-feedback">Please Select a Status</div>
                                                 </div>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_home_add">Home Address</label>
                                                     <input type="text" class="form-control" id="stud_home_add" name="stud_home_add" placeholder="Home Address" required="">
                                                     <div class="invalid-feedback">Please enter a Home Address</div>
                                                 </div>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_contact_no">Contact Number</label>
                                                     <input type="text" class="form-control" id="stud_contact_no" name="stud_contact_no" placeholder="09123456789" required="" maxlength="11" pattern="09[0-9]{9}" title="Please enter a valid Contact Number">
                                                     <div class="invalid-feedback">Please enter a Valid Contact Number</div>
                                                 </div>
-                                                <div class="mb-3 col-lg-4">
+                                                <div class="mb-4 col-lg-4">
                                                     <label class="form-label" for="stud_email_add">Email Address</label>
                                                     <input type="email" class="form-control" id="stud_email_add" name="stud_email_add" placeholder="name@email.com" required="">
                                                     <div class="invalid-feedback">Please enter a Email Address</div>
                                                 </div>
                                             </div>
+                                            <h4 style="border-bottom: solid gray 2px; padding-bottom: 15px; padding-top: 15px">PARENTS / GUARDIAN DETAILS</h4>
                                         </div>
-                                        <div class="col-lg-3 mt-4">
+                                        <div class="col-lg-3">
                                             <div class="text-center">
-                                                <div class="profile-user position-relative d-inline-block mx-auto mb-3">
-                                                    <img src="images/jp.jpg" class="rounded-circle avatar-lg img-thumbnail user-profile-image" alt="user-profile-image">
-                                                    <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
-                                                        <input id="profile-img-file-input" type="file" class="profile-img-file-input" accept="image/png, image/jpeg">
-                                                        <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                                                            <span class="avatar-title rounded-circle bg-light text-body">
-                                                                <i class="ri-camera-fill"></i>
-                                                            </span>
-                                                        </label>
-                                                    </div>
+                                                <div class="mb-3">
+                                                    <img src="../../Library/Images/user.png" style="height: 200px; border: solid 2px gray;" class="rounded-circle avatar-lg img-thumbnail user-profile-image" alt="user-profile-image">
                                                 </div>
-                                                <h5 class="fs-14">Upload Your Image</h5>
+                                                <div style="margin-left: 200px;">
+                                                    <input id="profile-img-file-input" type="file" class="profile-img-file-input" accept="image/png, image/jpeg">
+                                                </div>
                                                 <p class="fs-12">File format accepted: jpg, png</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-4 mt-1">
-                                        <h4>PARENTS / GUARDIAN DETAILS</h4>
                                     </div>
                                     <div class="row">
                                         <div class="mb-3 col-lg-3">
@@ -298,7 +293,7 @@
                 </div>
                 <!-- end card -->
             </div>
-        </section>
+    </section>
     </div>
     <!-- end layout wrapper -->
     <!-- Your HTML structure remains the same -->
@@ -490,7 +485,25 @@
 
         // Set the min attribute for the date input
         document.getElementById('appointmentDate').min = currentDateString;
+        $(document).ready(function () {
+            // Add change event listener to the file input
+            $("#profile-img-file-input").change(function () {
+                // Get the selected file
+                var file = this.files[0];
 
+                if (file) {
+                    // Read the file as a data URL
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        // Set the image source to the data URL
+                        $(".user-profile-image").attr("src", e.target.result);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
         // Initial display
         showStep(currentStep);
     </script>
