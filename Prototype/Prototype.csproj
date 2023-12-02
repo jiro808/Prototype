@@ -76,6 +76,7 @@
     <Content Include="Hope\Accounting\Calendar.aspx" />
     <Content Include="Hope\Accounting\Report.aspx" />
     <Content Include="Hope\Accounting\StudentDetail.aspx" />
+    <Content Include="Hope\Accounting\StudentDetailEdit.aspx" />
     <Content Include="Hope\Accounting\StudentList.aspx" />
     <Content Include="Hope\AdminLogin.aspx" />
     <Content Include="Hope\StudentCreate.aspx" />
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="Hope\Accounting\StudentDetail.aspx.designer.cs">
       <DependentUpon>StudentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hope\Accounting\StudentDetailEdit.aspx.cs">
+      <DependentUpon>StudentDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hope\Accounting\StudentDetailEdit.aspx.designer.cs">
+      <DependentUpon>StudentDetailEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hope\Accounting\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>

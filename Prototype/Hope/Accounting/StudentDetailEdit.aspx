@@ -1,7 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="StudentDetail.aspx.cs" Inherits="Prototype.Hope.Accounting.StudentDetail" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Accounting/AdminMaster.Master" AutoEventWireup="true" CodeBehind="StudentDetailEdit.aspx.cs" Inherits="Prototype.Hope.Accounting.StudentDetailEdit" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <div class="container-fluid">
+
+
+
+        <div class="container-fluid">
         <style>
             .hero-section {
                 background: url("images/bgdashboard.png") no-repeat center center;
@@ -211,8 +213,10 @@
                                     <div style="display: flex; justify-content: flex-end">
                                         <div class="d-flex align-items-start gap-3 mt-4">
                                             <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray"><img src="../../Library/Images/backgray.png" height="21" width="21"/>Back</button>
-                                            <a href="StudentDetailEdit.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray; background-color: #2e8fc5; border-radius: 10px; color: white; width: 120px">
+                                            <a href="StudentList.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray; background-color: #2e8fc5; border-radius: 10px; color: white; width: 120px">
                                                 <img src="../../Library/Images/backad.png" height="21" width="21">EDIT</a>
+                                            <a href="StudentList.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray; background-color: #2e8fc5; border-radius: 10px; color: white; width: 120px">
+                                                <img src="../../Library/Images/backad.png" height="21" width="21">SAVE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -254,4 +258,8 @@
         }
     });
 </script>
+
+
+
+
 </asp:Content>
