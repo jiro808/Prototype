@@ -73,7 +73,7 @@
             </div>
             <div class="col-sm" style="background-color: ghostwhite; padding: 20px; padding-bottom: 0; border-radius: 20px">
                 <h3>Recent</h3>
-                <a class="inner-div" href="Report.aspx" >
+                <a class="inner-div" href="StudentList.aspx" >
                     <table border="1" width="100%" class="table caption-top">
                         <tr style="text-align: center">
                             <th>Date of Transaction</th>

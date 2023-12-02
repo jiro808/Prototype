@@ -17,7 +17,7 @@ namespace Prototype.Hope.Accounting
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT [Transaction].date, Student.student_id, Student.name, Payment.method, Payment.tuition, Payment.miscellaneous, Payment.total, Payment.discount, Payment.discount_type, Payment.schoolfee, Payment.final_total, Payment.downpayment, Payment.schedule, [Transaction].status FROM [Transaction] INNER JOIN Student ON [Transaction].student_id = Student.student_id INNER JOIN Payment ON [Transaction].payment_id = Payment.payment_id";
+                string query = "SELECT * FROM Student";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.CommandType = CommandType.Text;
@@ -30,6 +30,17 @@ namespace Prototype.Hope.Accounting
                         ReportRepeater.DataSource = dataTable;
                         ReportRepeater.DataBind();
                     }
+                }
+            }
+        }
+        protected void ReportRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                DataRowView rowView = e.Item.DataItem as DataRowView;
+                if (rowView != null)
+                {
+                    // You can set additional properties here if needed
                 }
             }
         }

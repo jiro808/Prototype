@@ -210,7 +210,7 @@
                                                 </select>
                                                 <div class="invalid-feedback">Please Select Payment Method</div>
                                             </div>
-                                            <div class="fee-details"> 
+                                            <div class="fee-details">
                                                 <div class="detail">
                                                     <label for="tuition">Tuition:</label>
                                                     <input type="number" id="tuition" name="tuition" readonly="readonly">
@@ -221,7 +221,7 @@
                                                 </div>
                                                 <div class="total">
                                                     <label for="total">Total:</label>
-                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly"> 
+                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly">
                                                 </div>
                                             </div>
                                             <div class="form-section">
@@ -261,21 +261,22 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-start gap-3 mt-4">
-                                        <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray"><img src="../../Library/Images/backgray.png" height="21" width="21" />Back to Student Information</button>
+                                        <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray">
+                                            <img src="../../Library/Images/backgray.png" height="21" width="21" />Back to Student Information</button>
                                         <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-appointmen-tab" style="display: flex; align-items: center; gap: inherit; background-color: #31ad74">Next Step<img src="../../Library/Images/image.png" height="21" width="21" /></button>
                                     </div>
                                 </div>
                                 <!-- end tab pane -->
                                 <div class="tab-pane fade" id="steparrow-appointment-info" role="tabpanel" aria-labelledby="steparrow-appointment-info-tab">
-                                    <div class="container mt-5" style="display:flex; justify-content: space-between">
+                                    <div class="container mt-5" style="display: flex; justify-content: space-between">
                                         <div class="mt-3">
                                             <label for="appointmentDate">Select Date:</label>
-                                            <input type="date" id="appointmentDate" name="appointmentDate" required="required"/>
+                                            <input type="date" id="appointmentDate" name="appointmentDate" required="required" />
                                             <label for="appointmentTime">Select Time:</label>
-                                            <input type="time" id="appointmentTime" name="appointmentTime" min="8:00" max="14:00" required="required"/>
+                                            <input type="time" id="appointmentTime" name="appointmentTime" min="8:00" max="14:00" required="required" />
                                         </div>
                                         <div>
-                                            <img src="../../Library/Images/appside.jpg"  height="420" width="420"/>
+                                            <img src="../../Library/Images/appside.jpg" height="420" width="420" />
                                         </div>
                                     </div>
                                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.bundle.min.js"></script>
