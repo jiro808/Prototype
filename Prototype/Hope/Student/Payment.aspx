@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid">
         <style>
@@ -103,9 +106,30 @@
                                         <div class="col-lg-3">
                                             <div class="text-center">
                                                 <div class="mb-3">
-                                                    <img src="../../Library/Images/user.png" id="userimage" style="height: 200px; border: solid 2px gray;" class="rounded-circle avatar-lg img-thumbnail userimage" alt="user-profile-image">
-                                                    <input id="profileinput" type="file" class="profileinput" accept="image/png, image/jpeg" runat="server" required="" />
-                                                     <div class="invalid-feedback">Please choose a valid image</div>
+                                                    <img src="../../Library/Images/user.png" style="height: 200px; border: solid 2px gray;" class="rounded-circle avatar-lg img-thumbnail userimage" alt="user-profile-image" />
+                                                    <input id="profileinput" type="file" class="profileinput" accept="image/png, image/jpeg" required="" />
+                                                    <div class="invalid-feedback">Please choose a valid image</div>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            // Add change event listener to the file input
+                                                            $("#profileinput").change(function () {
+                                                                // Get the selected file
+                                                                var file = this.files[0];
+
+                                                                if (file) {
+                                                                    // Read the file as a data URL
+                                                                    var reader = new FileReader();
+
+                                                                    reader.onload = function (e) {
+                                                                        // Set the image source to the data URL
+                                                                        $(".userimage").attr("src", e.target.result);
+                                                                    };
+
+                                                                    reader.readAsDataURL(file);
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>
                                                 </div>
                                                 <p class="fs-12">File format accepted: jpg, png</p>
                                             </div>
