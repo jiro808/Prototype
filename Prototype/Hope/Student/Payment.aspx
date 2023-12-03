@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid">
@@ -212,8 +213,8 @@
                                                 </div>
                                                 <div style="padding-left: 75px">
                                                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Font-Size="x-Large" Width="100%" CssClass="form-check form-check-inline">
-                                                        <asp:ListItem Text="Partial Payment" Value="Partial" />
-                                                        <asp:ListItem Text="Full Payment" Value="Full" />
+                                                         <asp:ListItem>Partial Payment</asp:ListItem>
+                                                    <asp:ListItem>Full Payment</asp:ListItem>
                                                     </asp:RadioButtonList>
                                                 </div>
                                                 <div style="display: flex; margin-left: 50px; margin-top: 20px">
@@ -261,8 +262,7 @@
                                             <div>
                                                 <div style="margin-left: 50px; margin-bottom: 20px; display: flex; justify-content: space-between;">
                                                     <h4>DISCOUNT</h4>
-                                                    <button type="button" class="btn btn-info" id="otherFeesButton">Other School Fees</button>
-
+                                                    <button type="button" class="btn btn-info" onclick="otherFeesButton" id="otherFeesButton">Other School Fees</button>
                                                     <!-- Other School Fees Modal -->
                                                     <div id="otherFeesModal" class="modal" style="display: none;">
                                                         <div class="modal-content">
@@ -328,6 +328,34 @@
                                                             <button type="button" onclick="submitOtherFeesForm()">Submit</button>
                                                         </div>
                                                     </div>
+                                                    <script>
+                                                        var modal = document.getElementById("otherFeesModal");
+                                                        var btn = document.getElementById("otherFeesButton");
+                                                        var span = document.getElementsByClassName("close")[0];
+                                                        // When the user clicks the button, open the modal 
+                                                        btn.onclick = function () {
+                                                            modal.style.display = "block";
+                                                        }
+
+                                                        // When the user clicks on <span> (x), close the modal
+                                                        span.onclick = function () {
+                                                            modal.style.display = "none";
+                                                        }
+
+
+                                                        // When the user clicks anywhere outside of the modal, close it
+                                                        window.onclick = function (event) {
+                                                            if (event.target == modal) {
+                                                                modal.style.display = "none";
+                                                            }
+                                                        }
+                                                        // Placeholder function for submitting the form
+                                                        function submitOtherFeesForm() {
+                                                            // TODO: Add form submission logic
+                                                            swal("Good job!", "You clicked the button!", "success"); // Placeholder alert
+                                                            modal.style.display = "none";// Close the modal
+                                                        }
+                                                    </script>
                                                 </div>
                                                 <div style="margin-left: 70px; margin-bottom: 20px">
                                                     <select name="discount_offers" id="discount_offers" class="col-lg-6" style="background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem; font-size: 25px; text-align: center; height: 50px;" onchange="updateDiscountPercent()">
@@ -622,45 +650,5 @@
                 qrButton.style.display = 'none';
             }
         }
-
-
-
-        // Get the modal
-        var modal = document.getElementById("otherFeesModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("otherFeesButton");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Placeholder function for submitting the form
-        function submitOtherFeesForm() {
-            // TODO: Add form submission logic
-            alert('Form submitted!'); // Placeholder alert
-            modal.style.display = "none"; // Close the modal
-        }
-
-
-
-
-
     </script>
 </asp:Content>

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.ComponentModel.Design;
+using System.Web.Util;
 
 namespace Prototype.Hope.Student
 {
@@ -138,27 +140,24 @@ namespace Prototype.Hope.Student
 
                                         // Now you can use 'transactionId' in subsequent operations
                                         // For example, you can display it or use it in another insert operation.
-                                        string ODB = "INSERT INTO OverdueBalance (student_id, transaction_id, date, total, due) VALUES (@student_id, @transaction_id, @date, @total, @due)";
+                                        string ODB = "INSERT INTO OverdueBalance VALUES (@student_id, @transaction_id, @date, @total, @due)";
                                         using (SqlCommand commandODB = new SqlCommand(ODB, connection))
                                         {
+
                                             commandODB.Parameters.AddWithValue("@student_id", studentId);
                                             commandODB.Parameters.AddWithValue("@transaction_id", transactionId);
                                             commandODB.Parameters.AddWithValue("@date", appointmentDate);
                                             commandODB.Parameters.AddWithValue("@total", finaltotalInt);
 
-                                            // Add the missing parameter for '@due'
-                                            SqlParameter dueParameter = new SqlParameter("@due", SqlDbType.Date);
 
                                             if (paymentschedule == "Partial Payment")
                                             {
-                                                dueParameter.Value = DateTime.Parse(resultDueDate);
+                                                commandODB.Parameters.AddWithValue("@due", resultDueDate);
                                             }
                                             else if (paymentschedule == "Full Payment")
                                             {
-                                                dueParameter.Value = DateTime.Parse(appointmentDate);
+                                                commandODB.Parameters.AddWithValue("@due", appointmentDate);
                                             }
-
-                                            commandODB.Parameters.Add(dueParameter);
 
                                             commandODB.ExecuteNonQuery();
                                         }
@@ -172,9 +171,10 @@ namespace Prototype.Hope.Student
                                     commandAPP.Parameters.AddWithValue("@time", appointmentTime);
                                     commandAPP.Parameters.AddWithValue("@action", "Pending");
                                     commandAPP.ExecuteNonQuery();
+                                
                                 }
                             }
-                            ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
+                            ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Dashboard.aspx'; });",true);
                         }
                         else
                         {
