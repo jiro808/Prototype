@@ -165,7 +165,7 @@ namespace Prototype.Hope.Student
                                     commandAPP.ExecuteNonQuery();
                                 }
                             }
-                           // ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
+                            ScriptManager.RegisterStartupScript(this,GetType(),"alert","swal('Success!', 'Registration Complete', 'success').then(function() { window.location.href = 'Login.aspx'; });",true);
                         }
                         else
                         {
