@@ -108,7 +108,8 @@
                                             <div class="text-center">
                                                 <div class="mb-3">
                                                     <img src="../../Library/Images/user.png" id="userimage" style="height: 200px; border: solid 2px gray;" class="rounded-circle avatar-lg img-thumbnail userimage" alt="user-profile-image">
-                                                    <input id="profileinput" type="file" class="profileinput" accept="image/png, image/jpeg">
+                                                    <input id="profileinput" type="file" class="profileinput" accept="image/png, image/jpeg" runat="server" required="" />
+                                                     <div class="invalid-feedback">Please choose a valid image</div>
                                                 </div>
                                                 <p class="fs-12">File format accepted: jpg, png</p>
                                             </div>
