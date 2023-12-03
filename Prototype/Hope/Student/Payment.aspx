@@ -1,8 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="container-fluid">
         <style>
@@ -485,25 +481,7 @@
         // Set the min attribute for the date input
         document.getElementById('appointmentDate').min = currentDateString;
 
-        $(document).ready(function () {
-            // Add change event listener to the file input
-            $("#profileinput").change(function () {
-                // Get the selected file
-                var file = this.files[0];
-
-                if (file) {
-                    // Read the file as a data URL
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        // Set the image source to the data URL
-                        $(".userimage").attr("src", e.target.result);
-                    };
-
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
+     
         // Initial display
         showStep(currentStep);
     </script>
