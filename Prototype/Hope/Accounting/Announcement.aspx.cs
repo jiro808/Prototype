@@ -32,16 +32,17 @@ namespace Prototype.Hope.Accounting
             if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(message) && !string.IsNullOrEmpty(audience))
                 using (SqlConnection con = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Announcement VALUES (@title, @message, @audience)", con))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Announcement (audience, subject, message) VALUES (@audience, @subject, @message)", con))
                 {
-                    cmd.Parameters.AddWithValue("@title", title);
-                    cmd.Parameters.AddWithValue("@message", message);
-                    cmd.Parameters.AddWithValue("@audience", audience);
+                    cmd.Parameters.AddWithValue("@audience", title);
+                    cmd.Parameters.AddWithValue("@subject", message);
+                    cmd.Parameters.AddWithValue("@message", audience);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
-                    Response.Write("<script>alert('Announcement Successful');</script>");
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "swal('Success!', 'Announcement Complete', 'success');", true);
+               
                     ClearInputs();
                 }
             else

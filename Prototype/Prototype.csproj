@@ -126,6 +126,7 @@
     <Content Include="Library\Images\mail-white.png" />
     <Content Include="Library\Images\mail.png" />
     <Content Include="Library\Images\megaphone.png" />
+    <Content Include="Library\Images\qr.jpg" />
     <Content Include="Library\Images\reg.png" />
     <Content Include="Library\Images\report.png" />
     <Content Include="Library\Images\schedule.png" />
@@ -144,6 +145,7 @@
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Styles\sweetalert.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -261,6 +263,13 @@
     </Compile>
     <Compile Include="Hope\Accounting\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

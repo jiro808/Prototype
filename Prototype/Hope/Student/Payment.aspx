@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Hope/Student/StudentMaster.Master" AutoEventWireup="true" CodeBehind="Payment.aspx.cs" Inherits="Prototype.Hope.Student.Payment" EnableEventValidation="false" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </asp:Content>
@@ -115,7 +116,6 @@
                                                             $("#profileinput").change(function () {
                                                                 // Get the selected file
                                                                 var file = this.files[0];
-
                                                                 if (file) {
                                                                     // Read the file as a data URL
                                                                     var reader = new FileReader();
@@ -124,7 +124,6 @@
                                                                         // Set the image source to the data URL
                                                                         $(".userimage").attr("src", e.target.result);
                                                                     };
-
                                                                     reader.readAsDataURL(file);
                                                                 }
                                                             });
@@ -205,71 +204,170 @@
                                 </div>
                                 <!-- end tab pane -->
                                 <div class="tab-pane fade" id="steparrow-description-info" role="tabpanel" aria-labelledby="steparrow-description-info-tab">
-                                    <div class="school-fees-container">
-                                        <h2>School Fees</h2>
-                                        <div id="school-fees-form">
-                                            <div class="form-section">
-                                                <h3>Schedule of Fees</h3>
-                                                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Width="20%">
-                                                    <asp:ListItem>Partial Payment</asp:ListItem>
-                                                    <asp:ListItem>Full Payment</asp:ListItem>
-                                                </asp:RadioButtonList>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="row" style="display: flex">
+                                                <div style="display: flex; margin-left: 50px">
+                                                    <h3 class="col-lg-5">SCHEDULE OF FEES</h3>
+                                                </div>
+                                                <div style="padding-left: 75px">
+                                                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Font-Size="x-Large" Width="100%" CssClass="form-check form-check-inline">
+                                                        <asp:ListItem Text="Partial Payment" Value="Partial" />
+                                                        <asp:ListItem Text="Full Payment" Value="Full" />
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                                <div style="display: flex; margin-left: 50px; margin-top: 20px">
+                                                    <h3 class="col-lg-5">PAYMENT METHOD</h3>
+                                                </div>
+                                                <div style="padding-left: 75px; display: flex; gap: 15px;">
+                                                    <select name="payment_method" id="payment_method" class="col-lg-6" style="background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem; font-size: 25px; text-align: center; height: 50px;" onchange="toggleQrButton()">
+                                                        <option value="option1" disabled selected>Select Payment Method</option>
+                                                        <option value="Cash">Cash</option>
+                                                        <option value="Gcash">Gcash</option>
+                                                    </select>
+                                                    <button type="button" id="qrCodeButton" class="btn btn-info mt-2" style="display: none;" data-bs-toggle="modal" data-bs-target="#qrCodeModal">Show QR</button>
+                                                </div>
+                                                <!-- The Modal for QR Code -->
+                                                <div class="modal fade" id="qrCodeModal" tabindex="-1" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="qrCodeModalLabel">Gcash QR Code</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="../../Library/Images/qr.jpg"  alt="Gcash QR Code" class="img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="margin-top: 50px; display: flex; gap: 10px; flex-direction: column;">
+                                                    <div style="display: flex; margin-left: 50px; margin-top: 10px">
+                                                        <h5 class="col-lg-4" style="font-weight: normal">Tuition :</h5>
+                                                        <input type="number" id="tuition" name="tuition" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" />
+                                                    </div>
+                                                    <div style="display: flex; margin-left: 50px; margin-top: 10px">
+                                                        <h5 class="col-lg-4" style="font-weight: normal">Miscellaneous :</h5>
+                                                        <input type="number" id="miscellaneous" name="miscellaneous" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" />
+                                                    </div>
+                                                    <div style="display: flex; margin-left: 50px; margin-top: 10px">
+                                                        <h5 class="col-lg-4" style="font-weight: normal">Total :</h5>
+                                                        <input type="number" id="total" name="total" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-section">
-                                                <h3>Payment Method</h3>
-                                                <select name="payment_method" id="payment-method-select" required="">
-                                                    <option value="" disabled selected>Select Payment Method</option>
-                                                    <option value="Cash">Cash</option>
-                                                    <option value="Gcash">Gcash</option>
-                                                </select>
-                                                <div class="invalid-feedback">Please Select Payment Method</div>
+                                        </div>
+                                        <div class="col-lg-6" style="">
+                                            <div>
+                                                <div style="margin-left: 50px; margin-bottom: 20px; display: flex; justify-content: space-between;">
+                                                    <h4>DISCOUNT</h4>
+                                                    <button type="button" class="btn btn-info" id="otherFeesButton">Other School Fees</button>
+
+                                                    <!-- Other School Fees Modal -->
+                                                    <div id="otherFeesModal" class="modal" style="display: none;">
+                                                        <div class="modal-content">
+                                                            <span class="close">&times;</span>
+                                                            <h2>Other School Fees</h2>
+                                                            <!-- School Events -->
+                                                            <div class="form-group">
+                                                                <label>SCHOOL EVENTS: (Optional)</label>
+                                                                <div class="checkbox-group">
+                                                                    <input type="checkbox" id="fieldtrip" name="event" value="fieldtrip">
+                                                                    <label for="fieldtrip">Fieldtrip</label>
+                                                                    <input type="checkbox" id="jsprom" name="event" value="jsprom">
+                                                                    <label for="jsprom">JS Prom</label>
+                                                                    <input type="checkbox" id="retreat" name="event" value="retreat" />
+                                                                    <label for="retreat">Retreat</label>
+                                                                    <input type="checkbox" id="graduation" name="event" value="graduation" />
+                                                                    <label for="graduation">Graduation</label>
+
+                                                                    <!-- Add more checkboxes as needed -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- Other Fees -->
+                                                            <div class="form-group">
+                                                                <label>OTHER SCHOOL FEES: (Optional)</label>
+                                                                <div class="checkbox-group">
+                                                                    <input type="checkbox" id="schoolUniform" name="other_fees" value="schoolUniform">
+                                                                    <label for="schoolUniform">School Uniform</label>
+                                                                    <input type="checkbox" id="peuniform" name="other_fees" value="peuniform">
+                                                                    <label for="schoolUniform">PE Uniform</label>
+                                                                    <input type="checkbox" id="foundationtshirt" name="other_fees" value="foundationtshirt">
+                                                                    <label for="schoolUniform">Foundation T-shirt</label>
+                                                                    <input type="checkbox" id="girlscoutuniform" name="other_fees" value="girlscoutuniform">
+                                                                    <label for="schoolUniform">Girl Scout Uniform</label>
+                                                                    <input type="checkbox" id="boyscoutuniform" name="other_fees" value="boyscoutuniform">
+                                                                    <label for="schoolUniform">Boy Scout Uniform</label>
+                                                                    <input type="checkbox" id="books" name="other_fees" value="books">
+                                                                    <label for="schoolUniform">Books</label>
+                                                                    <!-- Add more checkboxes as needed -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- Shirt Sizes -->
+                                                            <div class="form-group">
+                                                                <label for="shirtSizes">SELECT THE SHIRT SIZES</label>
+                                                                <select id="shirtSizes" name="shirtSizes">
+                                                                    <option value="xs">Extra Small (XS)</option>
+                                                                    <option value="s">Small (S)</option>
+                                                                    <option value="m">Medium (M)</option>
+                                                                    <option value="l">Large (XS)</option>
+                                                                    <option value="xl">Extra Large (XS)</option>
+                                                                    <option value="2xl">2XL (Double Extra Large)</option>
+                                                                    <option value="3xl">3XL (Triple Extra Large)</option>
+                                                                    <option value="4xl">4XL (Quadruple Extra Large)</option>
+                                                                </select>
+                                                            </div>
+                                                            <!-- Gender -->
+                                                            <div class="form-group">
+                                                                <label>GENDER:</label>
+                                                                <input type="radio" id="male" name="gender" value="male">
+                                                                <label for="male">Male</label>
+                                                                <input type="radio" id="female" name="gender" value="female">
+                                                                <label for="female">Female</label>
+                                                            </div>
+                                                            <button type="button" onclick="submitOtherFeesForm()">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="margin-left: 70px; margin-bottom: 20px">
+                                                    <select name="discount_offers" id="discount_offers" class="col-lg-6" style="background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem; font-size: 25px; text-align: center; height: 50px;" onchange="updateDiscountPercent()">
+                                                        <option value="option1" disabled selected>Select Discount Offers</option>
+                                                        <option value="New Student">New Student Discount</option>
+                                                        <option value="Old Student">Old Student Discount</option>
+                                                        <option value="PWD Student">PWD Student Discount</option>
+                                                        <option value="Solo Parent Student">Solo Parent Student Discount</option>
+                                                        <option value="Returning Student">Returning Student Discount</option>
+                                                        <option value="Church Endorsement">Church Endorsement Discount</option>
+                                                        <option value="Academic Exellence">Academic Exellence Discount</option>
+                                                        <option value="Sibling Student">Sibling Student Discount</option>
+                                                        <option value="Employee">Employee Discount</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="fee-details">
-                                                <div class="detail">
-                                                    <label for="tuition">Tuition:</label>
-                                                    <input type="number" id="tuition" name="tuition" readonly="readonly">
+                                            <div style="margin-top: 50px; display: flex; flex-direction: column; gap: 10px;">
+                                                <div style="display: flex; margin-left: 90px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">Discount percentage :</h5>
+                                                    <input type="number" id="discount_percent" name="discount_percent" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" />
                                                 </div>
-                                                <div class="detail">
-                                                    <label for="miscellaneous">Miscellaneous & Other Fees:</label>
-                                                    <input type="number" id="miscellaneous" name="miscellaneous" readonly="readonly">
+                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">Other additional Discount :</h5>
+                                                    <input type="number" id="additional_discount" name="additional_discount" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="PENDING APPROVAL" />
                                                 </div>
-                                                <div class="total">
-                                                    <label for="total">Total:</label>
-                                                    <input type="number" id="total" name="total" placeholder="Total Amount" readonly="readonly">
+                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">Total Amount of Discount :</h5>
+                                                    <input type="number" id="total_discount" name="total_discount" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="EVALUATION IN PROCESS" />
                                                 </div>
-                                            </div>
-                                            <div class="form-section">
-                                                <h3>Discount Offers</h3>
-                                                <select name="discount_offers" id="discount-offers-select" required="" onchange="updateDiscountPercent()">
-                                                    <option value="" disabled selected>Select Discount Offers</option>
-                                                    <option value="New Student">New Student Discount</option>
-                                                    <option value="Old Student">Old Student Discount</option>
-                                                    <option value="PWD Student">PWD Student Discount</option>
-                                                    <option value="Solo Parent Student">Solo Parent Student Discount</option>
-                                                    <option value="Returning Student">Returning Student Discount</option>
-                                                    <option value="Church Endorsement">Church Endorsement Discount</option>
-                                                    <option value="Academic Exellence">Academic Exellence Discount</option>
-                                                    <option value="Sibling Student">Sibling Student Discount</option>
-                                                    <option value="Employee">Employee Discount</option>
-                                                </select>
-                                                <div class="invalid-feedback">Please Select Discount Offer</div>
-                                            </div>
-                                            <div class="discount-details">
-                                                <div class="detail">
-                                                    <label for="discount_percent">Discount Percent:</label>
-                                                    <input type="number" id="discount_percent" name="discount_percent" readonly="readonly">
+                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">School Fees :</h5>
+                                                    <input type="number" id="schoolf" name="schoolf" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" />
                                                 </div>
-                                                <div class="detail">
-                                                    <label for="additional_discount">Other Additional Discount:</label>
-                                                    <input type="text" id="additional_discount" name="additional_discount" placeholder="Administrator should complete this section." readonly="readonly">
+                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">Total :</h5>
+                                                    <input type="number" id="total_final" name="total_final" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="EVALUATION IN PROCESS" />
                                                 </div>
-                                                <div class="total">
-                                                    <label for="total_discount">Total Amount of Discount:</label>
-                                                    <input type="number" id="total_discount" name="total_discount" placeholder="Administrator should complete this section." readonly="readonly">
-                                                </div>
-                                                <div class="total">
-                                                    <label for="total_final">Final Amount:</label>
-                                                    <input type="number" id="total_final" name="total_final" readonly="readonly">
+                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
+                                                    <h5 class="col-lg-4" style="font-weight: normal">Initial Payment :</h5>
+                                                    <input type="number" id="initial_payment" name="initial_payment" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="EVALUATION IN PROCESS" />
                                                 </div>
                                             </div>
                                         </div>
@@ -305,14 +403,14 @@
                                 </div>
                                 <!-- end tab pane -->
                             </div>
-                            <!-- end tab content -->
+                        <!-- end tab content -->
                         </div>
                     </div>
                     <!-- end card body -->
                 </div>
                 <!-- end card -->
             </div>
-    </section>
+        </section>
     </div>
     <!-- end layout wrapper -->
     <!-- Your HTML structure remains the same -->
@@ -385,13 +483,14 @@
             var gradeLevel = document.getElementById("grade_level").value;
             var tuitionInput = document.getElementById("tuition");
             var tuition2Input = document.getElementById("miscellaneous");
+            var scfee = document.getElementById("schoolf");
             var tuition3Input = document.getElementById("total");
             var discountPercentInput = document.getElementById("discount_percent");
             var totalFinalInput = document.getElementById("total_final");
             // Default tuition and miscellaneous values
             var tuition = 0;
             var miscellaneous = 15800;
-            var fee = 9100;
+            var fee = 7900;
             // Set tuition based on grade level
             switch (gradeLevel) {
                 case "Nursery":
@@ -423,6 +522,7 @@
                     break
                 case "Grade 8":
                     tuition = 31109;
+
                     break;
                 case "Grade 9":
                     tuition = 34456;
@@ -436,17 +536,19 @@
                     tuition = 0; // Set the default tuition value
                     break;
             }
-            var mis = miscellaneous + 7900;
             // Calculate total with miscellaneous
+            var total = tuition + miscellaneous;
             var total1 = tuition + miscellaneous + fee;
             // Get discount percentage
             var discountPercent = parseFloat(discountPercentInput.value) || 0;
+            var formattedDiscountPercent = discountPercent + '%';
             // Calculate discounted tuition
             var discountedTuition = (total1 - (total1 * (discountPercent / 100)));
             // Format and update input values
             tuitionInput.value = tuition.toFixed();
-            tuition2Input.value = mis.toFixed();
-            tuition3Input.value = total1.toFixed();
+            tuition2Input.value = miscellaneous.toFixed();
+            tuition3Input.value = total.toFixed();
+            scfee.value = fee.toFixed();
             // Display the total with discount in the "total_final" element
             totalFinalInput.value = discountedTuition.toFixed();
         }
@@ -458,55 +560,107 @@
         document.getElementById("discount_percent").oninput = setTuition;
         function updateDiscountPercent() {
             // Get the dropdown and input elements
-            var discountOffersSelect = document.getElementById("discount-offers-select");
+            var discountOffersSelect = document.getElementById("discount_offers");
             var discountPercentInput = document.getElementById("discount_percent");
             // Set the discount_percent based on the selected option
             switch (discountOffersSelect.value) {
                 case "New Student":
-                    discountPercentInput.value = 5;
+                    discount = 5;
                     break;
                 case "Old Student":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "PWD Student":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "Solo Parent Student":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "Returning Student":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "Church Endorsement":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "Academic Exellence":
-                    discountPercentInput.value = 50;
+                    discount = 50;
                     break;
                 case "Sibling Student":
-                    discountPercentInput.value = 10;
+                    discount = 10;
                     break;
                 case "Employee":
-                    discountPercentInput.value = 10;
+                    discount = 10 + "%";
                     break;
                 // Add cases for other options
                 default:
                     // Set a default value or clear the input if needed
-                    discountPercentInput = 0;
+                    discount = 0;
                     break;
             }
+            discountPercentInput.value = discount;
             // Trigger the setTuition function to recalculate with the new discount
             setTuition();
         }
         // Get the current date and time
         var currentDate = new Date();
         var currentDateString = currentDate.toISOString().split('T')[0];
-
         // Set the min attribute for the date input
         document.getElementById('appointmentDate').min = currentDateString;
-
-     
         // Initial display
         showStep(currentStep);
+        function toggleQrButton() {
+            // Get the selected payment method
+            var paymentMethod = document.getElementById('payment_method').value;
+
+            // Get the QR button
+            var qrButton = document.getElementById('qrCodeButton');
+
+            // Show or hide the QR button based on the payment method
+            if (paymentMethod === 'Gcash') {
+                qrButton.style.display = 'block';
+            } else {
+                qrButton.style.display = 'none';
+            }
+        }
+
+
+
+        // Get the modal
+        var modal = document.getElementById("otherFeesModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("otherFeesButton");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Placeholder function for submitting the form
+        function submitOtherFeesForm() {
+            // TODO: Add form submission logic
+            alert('Form submitted!'); // Placeholder alert
+            modal.style.display = "none"; // Close the modal
+        }
+
+
+
+
+
     </script>
 </asp:Content>

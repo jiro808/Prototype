@@ -51,16 +51,19 @@ namespace Prototype.Hope.Student
                 string discountoffer = Request["discount_offers"];
                 string discountValue = Request["discount_percent"];
                 string finaltotalValue = Request["total_final"];
+                ///string initial_paymentValue = Request["initial_payment"];
                 int tuitionInt;
                 int miscellaneousInt;
                 int totalInt;
                 int discountInt;
                 int finaltotalInt;
+                ///int initial_paymentInt;
                 int.TryParse(tuitionValue, out tuitionInt);
                 int.TryParse(miscellaneousValue, out miscellaneousInt);
                 int.TryParse(totalValue, out totalInt);
                 int.TryParse(discountValue, out discountInt);
                 int.TryParse(finaltotalValue, out finaltotalInt);
+                ///int.TryParse(initial_paymentValue, out initial_paymentInt);
                 string appointmentDate = Request["appointmentDate"];
                 string appointmentTime = Request["appointmentTime"];
                 DateTime.TryParse(appointmentDate, out DateTime originalDate);
@@ -98,7 +101,8 @@ namespace Prototype.Hope.Student
                                 command.Parameters.AddWithValue("@guardian_contact", grdcontact);
                                 command.Parameters.AddWithValue("@guardian_email", grdemail);
                                 int studentId = Convert.ToInt32(command.ExecuteScalar());
-                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount,  final_total, downpayment) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @final_total, @downpayment); SELECT SCOPE_IDENTITY();";
+
+                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount, final_total, downpayment, student_id) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @final_total, @downpayment, @student_id); SELECT SCOPE_IDENTITY();";
                                 using (SqlCommand commandP = new SqlCommand(PAY, connection))
                                 {
                                     commandP.Parameters.AddWithValue("@schedule", paymentschedule);
@@ -109,8 +113,7 @@ namespace Prototype.Hope.Student
                                     commandP.Parameters.AddWithValue("@schoolfee", 7900);
                                     commandP.Parameters.AddWithValue("@discount_type", discountoffer);
                                     commandP.Parameters.AddWithValue("@discount", discountInt);
-                                    commandP.Parameters.AddWithValue("@final_total", finaltotalInt);
-
+                                    commandP.Parameters.AddWithValue("@final_total", finaltotalValue);
                                     if (paymentschedule == "Full Payment")
                                     {
                                         commandP.Parameters.AddWithValue("@downpayment", finaltotalInt);
@@ -119,7 +122,9 @@ namespace Prototype.Hope.Student
                                     {
                                         commandP.Parameters.AddWithValue("@downpayment", 5000);
                                     }
+                                    commandP.Parameters.AddWithValue("@student_id", studentId);
                                     int paymentId = Convert.ToInt32(commandP.ExecuteScalar());
+
                                     string TRA = "INSERT INTO [Transaction] OUTPUT INSERTED.transaction_id VALUES (@date, @student_id, @payment_id, @status)";
                                     using (SqlCommand commandTRA = new SqlCommand(TRA, connection))
                                     {
@@ -133,23 +138,27 @@ namespace Prototype.Hope.Student
 
                                         // Now you can use 'transactionId' in subsequent operations
                                         // For example, you can display it or use it in another insert operation.
-                                        string ODB = "INSERT INTO OverdueBalance (student_id, date, total, due) VALUES (@student_id, @date, @total, @due)";
+                                        string ODB = "INSERT INTO OverdueBalance (student_id, transaction_id, date, total, due) VALUES (@student_id, @transaction_id, @date, @total, @due)";
                                         using (SqlCommand commandODB = new SqlCommand(ODB, connection))
                                         {
-
                                             commandODB.Parameters.AddWithValue("@student_id", studentId);
+                                            commandODB.Parameters.AddWithValue("@transaction_id", transactionId);
                                             commandODB.Parameters.AddWithValue("@date", appointmentDate);
                                             commandODB.Parameters.AddWithValue("@total", finaltotalInt);
 
+                                            // Add the missing parameter for '@due'
+                                            SqlParameter dueParameter = new SqlParameter("@due", SqlDbType.Date);
 
                                             if (paymentschedule == "Partial Payment")
                                             {
-                                                commandODB.Parameters.AddWithValue("@due", resultDueDate);
+                                                dueParameter.Value = DateTime.Parse(resultDueDate);
                                             }
                                             else if (paymentschedule == "Full Payment")
                                             {
-                                                commandODB.Parameters.AddWithValue("@due", appointmentDate);
+                                                dueParameter.Value = DateTime.Parse(appointmentDate);
                                             }
+
+                                            commandODB.Parameters.Add(dueParameter);
 
                                             commandODB.ExecuteNonQuery();
                                         }
