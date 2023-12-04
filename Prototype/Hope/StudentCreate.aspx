@@ -4,8 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Create Account<</title>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="../Scripts/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Create Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
      <style>
         .form-control-border {
             border-radius: .25rem;
@@ -39,24 +41,22 @@
                     <h1>Create Account</h1>
                 </div>
                     <div class="form-group">
-                        <input type="text" id="name" class="form-control form-control-border" placeholder="Full Name" />
+                        <input type="text" id="name" name="name" class="form-control form-control-border" placeholder="Full Name" required="required"/>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" class="form-control form-control-border" placeholder="Email" />
+                        <input type="email" id="email" name="email" class="form-control form-control-border" placeholder="Email" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="text" id="username" class="form-control form-control-border" placeholder="Username" />
+                        <input type="text" id="username" name="username" class="form-control form-control-border" placeholder="Username" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="password" id="password" class="form-control form-control-border" placeholder="Password" />
+                        <input type="password" id="password" name="password" class="form-control form-control-border" placeholder="Password" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="password" id="password2" class="form-control form-control-border" placeholder="Re-type Password" />
+                        <input type="password" id="password2" name="password2" class="form-control form-control-border" placeholder="Re-type Password" required="required" />
                     </div>
                     <div class="form-group text-center">
-                      
-                        <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Confirm" OnClick="Button1_Click" />
-   
+                        <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Confirm" OnClick="Button1_Click" OnClientClick="return validatePasswords();"/>
                         <asp:Button ID="Button2"  class="btn btn-secondary" runat="server" Text="Cancel" OnClick="Button2_Click" />
                     </div>
                 <div class="text-center">
@@ -65,7 +65,22 @@
             </div>
         </div>
     </div>
+<script>
+    function validatePasswords() {
+        var pass = document.getElementById("password");
+        var pass2 = document.getElementById("password2");
+        var password = pass.value;
+        var password2 = pass2.value;
 
+        if (password !== password2) {
+            swal('Error', 'Passwords do not match.', 'error');
+            return false; // Prevent form submission
+        }
+
+        // Passwords match, continue with form submission
+        return true;
+    }
+</script>
     <!-- Optional: Include the jQuery library -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <!-- Include Bootstrap JS from a CDN -->

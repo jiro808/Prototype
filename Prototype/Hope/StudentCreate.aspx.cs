@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,57 +19,70 @@ namespace Prototype.Hope
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string name = Request.Form["name"];
+            string email = Request.Form["email"];
+            string username = Request.Form["username"];
+            string password = Request.Form["password"];
 
-            string name = Request["name"];
-            string email = Request["email"];
-            string username = Request["username"];
-            string password = Request["password"];
-            string password2 = Request["password2"];
-
-            // Check if passwords match
-            if (password != password2)
+            // Check if the username already exists
+            if (IsUsernameExists(username))
             {
-                // Passwords do not match, display an error message
-                Response.Write("<script>alert('Passwords do not match.');</script>");
-                return; // Exit the method, preventing further processing
+                // Handle the situation where the username already exists
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "swal('Error', 'Username already exists.', 'error');", true);
+                return;
             }
 
-            // If passwords match, continue with the account creation logic
-
+            // Continue with the insertion
             string query = "INSERT INTO StudentAccount (name, email, username, password) VALUES (@name, @email, @username, @password)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    // Add parameters
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password", password);
 
-                    // Open the connection
                     connection.Open();
+                    cmd.ExecuteNonQuery();
 
-                    // Execute the command
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    // Check if the insert was successful
-                    if (rowsAffected > 0)
-                    {
-                        // Display a success message or redirect to another page
-                        Response.Write("<script>alert('Account created successfully.');</script>");
-                    }
-                    else
-                    {
-                        // Display an error message
-                        Response.Write("<script>alert('Account creation failed.');</script>");
-                    }
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "swal('Success', 'Account created successfully.', 'success');", true);
                 }
             }
         }
+
+        private bool IsUsernameExists(string username)
+        {
+            // Check if the username already exists in the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM StudentAccount WHERE username = @username", connection))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    int count = (int)cmd.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
+        }
+
         protected void Button2_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this,GetType(),"alert", "swal('Are you sure?', '', 'warning');", true);
+            // ScriptManager.RegisterStartupScript(this,GetType(),"alert", "swal('Are you sure?', 'Registration Complete', 'success').then(function() { window.location.href = 'Dashboard.aspx'; });", true);
+            //<a href="StudentLogin.aspx">StudentLogin.aspx</a>
+
+            string script = @"swal({   title: 'Are you Sure?',
+                                        text: '',
+                                        icon: 'warning',
+                                        buttons: {cancel: 'Cancel',confirm: 'OK',},}).then((isConfirmed) => {
+                                        if (isConfirmed) {window.location.href = 'StudentLogin.aspx'; } else {}});";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", script, true);
+
 
         }
     }
