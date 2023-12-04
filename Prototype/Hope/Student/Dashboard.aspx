@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <div class="layout-wrapper landing">
         <section class="section pb-0 hero-section" id="hero">
-            <div class="container" style="margin: 50px">
+            <div class="container" style="margin: 50px; display:flex;">
                 <div class="row justify-content-left">
                     <div class="col-lg-7 col-sm-12">
                         <div class="mt-lg-12 pt-5">
@@ -19,6 +19,9 @@
                             </a>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <img src="../../Library/Images/NEW%20STUDENT%20BILLING%20SYSTEM%20%20USER%20LEVEL%20(2).png" height="650"/>
                 </div>
             </div>
         </section>

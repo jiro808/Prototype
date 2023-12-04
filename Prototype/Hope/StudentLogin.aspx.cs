@@ -34,7 +34,7 @@ namespace Prototype.Hope
                             {
 
                                 string resolvedUrl = ResolveUrl("~/Hope/Student/Dashboard.aspx");
-                                Response.Write("<script>alert('Welcome, Student You have successfully logged in.'); window.location.href='" + resolvedUrl + "';</script>");
+                                Response.Write("<script>alert('Welcome, " + UsernameTextBox.Text + " You have successfully logged in.'); window.location.href='" + resolvedUrl + "';</script>");
 
                             }
                             else
