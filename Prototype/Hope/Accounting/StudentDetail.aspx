@@ -212,9 +212,8 @@
                                                 </div>
                                                 <div style="display: flex; margin-left: 90px; margin-top: 10px">
                                                     <h5 class="col-lg-4" style="font-weight: normal">Other additional Discount :</h5>
-                                                    <asp:TextBox ID="other" runat="server" class="col-lg-6" style="font-size: larger; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox ID="other" runat="server" class="col-lg-6" Style="font-size: larger; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" required=""></asp:TextBox>
                                                 </div>
-                                            </div>
                                             <div>
                                                 <div style="display: flex; margin-left: 90px; margin-top: 10px">
                                                     <h5 class="col-lg-4" style="font-weight: normal">Total Amount of Discount :</h5>
@@ -234,8 +233,10 @@
                                     <div style="display: flex; justify-content: flex-end">
                                         <div class="d-flex align-items-start gap-3 mt-4">
                                             <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray"><img src="../../Library/Images/backgray.png" height="21" width="21"/>Back</button>
-                                            <a href="StudentDetailEdit.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray; background-color: #2e8fc5; border-radius: 10px; color: white; width: 120px">
-                                                <img src="../../Library/Images/backad.png" height="21" width="21">EDIT</a>
+                                            <a href="StudentDetailEdit.aspx" type="button" class="btn btn-light btn-label previestab" style="display: flex; align-items: center; gap: inherit; border: solid 1px; border-color: gray; background-color: #2e8fc5; border-radius: 10px; color: white; width: 120px" onclick="enableEditing()">
+                                                <img src="../../Library/Images/backad.png" height="21" width="21">EDIT
+                                            </a>
+                                            <asp:Button ID="Button1" runat="server" Text="Button" />
                                         </div>
                                     </div>
                                 </div>

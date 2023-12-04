@@ -393,10 +393,6 @@
                                                     <h5 class="col-lg-4" style="font-weight: normal">Total :</h5>
                                                     <input type="number" id="total_final" name="total_final" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="EVALUATION IN PROCESS" />
                                                 </div>
-                                                <div style="display: flex; margin-left: 90px; margin-top: 10px">
-                                                    <h5 class="col-lg-4" style="font-weight: normal">Initial Payment :</h5>
-                                                    <input type="number" id="initial_payment" name="initial_payment" readonly="readonly" class="col-lg-6" style="font-size: x-large; text-align: center; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem;" placeholder="EVALUATION IN PROCESS" />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -104,7 +104,7 @@ namespace Prototype.Hope.Student
                                 command.Parameters.AddWithValue("@guardian_email", grdemail);
                                 int studentId = Convert.ToInt32(command.ExecuteScalar());
 
-                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount, final_total, downpayment, student_id) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @final_total, @downpayment, @student_id); SELECT SCOPE_IDENTITY();";
+                                string PAY = "INSERT INTO Payment (schedule, method, tuition, miscellaneous, total, schoolfee, discount_type, discount, other_discount, final_total, downpayment, student_id) VALUES (@schedule, @method, @tuition, @miscellaneous, @total, @schoolfee, @discount_type, @discount, @other_discount, @final_total, @downpayment, @student_id); SELECT SCOPE_IDENTITY();";
                                 using (SqlCommand commandP = new SqlCommand(PAY, connection))
                                 {
                                     commandP.Parameters.AddWithValue("@schedule", paymentschedule);
@@ -115,6 +115,7 @@ namespace Prototype.Hope.Student
                                     commandP.Parameters.AddWithValue("@schoolfee", 7900);
                                     commandP.Parameters.AddWithValue("@discount_type", discountoffer);
                                     commandP.Parameters.AddWithValue("@discount", discountInt);
+                                    commandP.Parameters.AddWithValue("@other_discount", "Pending");
                                     commandP.Parameters.AddWithValue("@final_total", finaltotalValue);
                                     if (paymentschedule == "Full Payment")
                                     {
