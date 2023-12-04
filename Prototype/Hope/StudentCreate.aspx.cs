@@ -17,6 +17,19 @@ namespace Prototype.Hope
         {
 
         }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "swal('Are you sure?', '', 'warning');", true);
+            // ScriptManager.RegisterStartupScript(this,GetType(),"alert", "swal('Are you sure?', 'Registration Complete', 'success').then(function() { window.location.href = 'Dashboard.aspx'; });", true);
+            //<a href="StudentLogin.aspx">StudentLogin.aspx</a>
+
+            string script = @"swal({   title: 'Are you Sure?',
+                                        text: '',
+                                        icon: 'warning',
+                                        buttons: {cancel: 'Cancel',confirm: 'OK',},}).then((isConfirmed) => {
+                                        if (isConfirmed) {window.location.href = 'StudentLogin.aspx'; } else {}});";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert", script, true);
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string name = Request.Form["name"];
@@ -68,22 +81,6 @@ namespace Prototype.Hope
                     return count > 0;
                 }
             }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this,GetType(),"alert", "swal('Are you sure?', '', 'warning');", true);
-            // ScriptManager.RegisterStartupScript(this,GetType(),"alert", "swal('Are you sure?', 'Registration Complete', 'success').then(function() { window.location.href = 'Dashboard.aspx'; });", true);
-            //<a href="StudentLogin.aspx">StudentLogin.aspx</a>
-
-            string script = @"swal({   title: 'Are you Sure?',
-                                        text: '',
-                                        icon: 'warning',
-                                        buttons: {cancel: 'Cancel',confirm: 'OK',},}).then((isConfirmed) => {
-                                        if (isConfirmed) {window.location.href = 'StudentLogin.aspx'; } else {}});";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert", script, true);
-
-
         }
     }
 }

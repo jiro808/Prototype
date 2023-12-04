@@ -57,8 +57,6 @@
                     </div>
                     <div class="form-group text-center">
                         <asp:Button ID="Button1"  class="btn btn-primary" runat="server" Text="Confirm" OnClick="Button1_Click" OnClientClick="return validatePasswords();"/>
-                        <asp:Button ID="Button2"  class="btn btn-secondary" runat="server" Text="Cancel" OnClick="Button2_Click" />
-                    </div>
                 <div class="text-center">
                     Already have an account? <a href="StudentLogin.aspx" class="text-primary">Sign In</a>
                 </div>

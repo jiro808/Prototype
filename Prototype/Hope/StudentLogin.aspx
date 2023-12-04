@@ -21,7 +21,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container">
+        <div class="container" style="height: 480px;">
             <div class="thumbnail">
                 <p class="title">Student</p>
                 <span class="subtitle">Login your account swiftly and indulge in our hassle-free online billing experience.</span>
@@ -40,9 +40,14 @@
                     </svg>
                     <asp:TextBox ID="PasswordTextBox" runat="server" CssClass="input_field" TextMode="Password" placeholder="Password" title="Inpit title" /><br />
                 </div>
-                <div class="input_container">
+                <div class="input_container" style="display:flex; gap:15px">
                     <asp:Button ID="LoginButton" runat="server" CssClass="button" Text="Login" OnClick="adminlogin_Click" />
-                    <span class="line"><a href="AdminLogin.aspx">Login as Admin</a></span>
+                    <div style="display: flex; justify-content: center; gap: inherit; margin-top: 25px">
+                        <span class="line"><a href="AdminLogin.aspx">Login as Admin</a></span>
+                    </div>
+                    <div class="text-center">
+                        Already have an account? <a href="StudentCreate.aspx" class="text-primary">Sign Up</a>
+                    </div>
                 </div>
             </div>
             <div class="content">
