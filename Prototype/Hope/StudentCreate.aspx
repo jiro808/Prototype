@@ -60,7 +60,7 @@
                         <asp:Button ID="Button2"  class="btn btn-secondary" runat="server" Text="Cancel" OnClick="Button2_Click" />
                     </div>
                 <div class="text-center">
-                    Already have an account? <a href="#" class="text-primary">Sign In</a>
+                    Already have an account? <a href="StudentLogin.aspx" class="text-primary">Sign In</a>
                 </div>
             </div>
         </div>
