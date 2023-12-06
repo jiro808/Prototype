@@ -5,23 +5,7 @@
 
 
 
-
-        <!-- Your page content goes here -->
-
-        <div>
-            <!-- Your HTML code for the dropdown -->
-            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="col-lg-6" 
-                style="background-color: #e9ecef; border: 1px solid #ced4da; border-radius: .25rem; font-size: 25px; text-align: center; height: 50px;"
-                AutoPostBack="true" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged">
-                <asp:ListItem Text="Pe3nding" Value="option1" Selected="True" />
-                <asp:ListItem Text="Declined" Value="Declined" />
-                <asp:ListItem Text="Approved" Value="Approved" />
-            </asp:DropDownList>
-        </div>
- 
-
-
-
+    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
 
 
 </asp:Content>

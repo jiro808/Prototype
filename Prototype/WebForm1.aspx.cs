@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace Prototype
 {
@@ -9,62 +11,47 @@ namespace Prototype
         {
             if (!IsPostBack)
             {
-                try
-                {
-                    // Load data from the database and set the pre-selected value for the dropdown
-                    string firstOptionValue = GetFirstOptionValueFromDatabase();
+                // Call a method to retrieve data from the database
+                DataTable dt = GetDataFromDatabase();
 
-                    // Check if the value is one of the valid options before setting it
-                    if (ddlStatus.Items.FindByValue(firstOptionValue) != null)
-                    {
-                        ddlStatus.SelectedValue = firstOptionValue;
-                    }
-                    else
-                    {
-                        // Handle the case where the retrieved value is not a valid option
-                        // You may want to provide a default or handle it as appropriate for your application
-                        // For now, just printing a message to the console
-                        Console.WriteLine($"Invalid value '{firstOptionValue}' retrieved from the database.");
-                    }
-                }
-                catch (Exception ex)
+                // Bind the data to the DropDownList
+                DropDownList1.DataSource = dt;
+                DropDownList1.DataTextField = "other_discount"; // Replace with the actual field name from your database
+                DropDownList1.DataValueField = "other_discount"; // Replace with the actual field name from your database
+                DropDownList1.DataBind();
+                // Add additional options
+                DropDownList1.Items.Insert(0, new ListItem("Approved", "Approved"));
+                DropDownList1.Items.Insert(1, new ListItem("Declined", "Declined"));
+
+                // Set the pre-selected value based on the data from the database
+                if (dt.Rows.Count > 0)
                 {
-                    // Handle the exception (log it, display an error message, etc.)
-                    // For simplicity, this example just prints the error to the console
-                    Console.WriteLine("Error: " + ex.Message);
+                    string preSelectedValue = dt.Rows[0]["other_discount"].ToString();
+                    DropDownList1.SelectedValue = preSelectedValue;
                 }
             }
         }
 
-        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private DataTable GetDataFromDatabase()
         {
-            // Handle the dropdown selection change if needed
-            // This method will be called when the user changes the selection
-        }
-
-        private string GetFirstOptionValueFromDatabase()
-        {
+            // Replace the connection string and query with your actual values
             string connectionString = "Data Source=DESKTOP-EOET84T\\MSSQLSERVER_PC;Initial Catalog=SIA_BILLING;Persist Security Info=True;User ID=sa;Password=123";
+            string query = "SELECT other_discount FROM Payment";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-
-                string sql = "SELECT TOP 1 other_discount FROM Payment";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
-                        if (reader.Read())
-                        {
-                            return reader["other_discount"].ToString();
-                        }
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
                     }
                 }
             }
-
-            return string.Empty;
         }
+
+            
     }
 }
