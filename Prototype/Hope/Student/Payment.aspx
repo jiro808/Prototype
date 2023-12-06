@@ -28,6 +28,153 @@
                 background-color: #4CAF50; /* Green color */
                 color: #fff; /* Text color */
             }
+            #otherFeesModal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 1200px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    line-height: 1.6;
+        font-size: 18px; 
+
+}
+/* Labels */
+.modal-content label {
+    margin-bottom: 8px; 
+    display: inline-block; 
+    font-weight: bold; 
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Increase the padding inside the modal-content for more space */
+.modal-content {
+    padding: 40px; 
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 15px auto;
+    width: 80%; 
+    max-width: 700px; 
+}
+
+/* Adjust spacing between form groups */
+.modal-form-group {
+    margin-bottom: 20px; 
+}
+
+/* Style checkboxes and radios for better spacing */
+.modal-form-group input[type="checkbox"],
+.modal-form-group input[type="radio"] {
+    margin-right: 15px; 
+    margin-bottom: 5px; 
+}
+
+/* Style labels for better spacing and clarity */
+.modal-form-group label {
+    display: block;
+    margin-bottom: 10px; 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+}
+
+/* Adjust select dropdowns for consistent styling */
+.modal-form-group select {
+    width: 100%;
+    padding: 12px; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px; 
+}
+
+/* Modify button styles for better visibility and spacing */
+button.modal-submit-btn {
+    padding: 12px 30px; 
+    font-size: 1rem;
+    margin-top: 20px; 
+    width: auto; 
+}
+
+/* If you have titles or headers, you can adjust their margins too */
+.modal-header h2 {
+    margin-top: 0;
+    margin-bottom: 20px; 
+}
+@media (min-width: 768px) {
+    .modal-content {
+        margin-top: 2%; 
+    }
+}
+
+/* For even larger screens, you might want to center the modal more precisely */
+            @media (min-width: 992px) {
+                .modal-content {
+                    margin-top: 50px; 
+                    margin-bottom: 50px; 
+                }
+            }
+            /* Form Controls */
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="email"],
+.modal-content select,
+.modal-content .btn {
+    font-size: 16px; 
+    padding: 10px; 
+}
+
+/* Buttons */
+.modal-content .btn {
+    padding: 12px 20px; 
+    font-size: 18px; 
+}
+
+/* Checkboxes and Radio Buttons */
+.modal-content input[type="checkbox"],
+.modal-content input[type="radio"] {
+    transform: scale(1.2); 
+    margin-right: 8px; 
+    vertical-align: middle; 
+}
         </style>
         <section class="section pb-0 hero-section" id="hero">
             <div class="col-xl-11.5" style="padding: 5%;">
