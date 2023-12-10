@@ -10,72 +10,51 @@
             .hero-section {
                 background: url("images/bgdashboard.png") no-repeat center center;
                 background-size: cover;
-                padding: 60px 0; /* Adjust the padding as needed */
+                padding: 60px 0; 
             }
 
                 .hero-section .container {
-                    background: rgba(255, 255, 255, 0.0); /* Add a semi-transparent white background to the container */
+                    background: rgba(255, 255, 255, 0.0); 
                     padding: 20px;
                 }
 
             #hero {
-                height: 90.8vh; /* Set the height to 100% of the viewport height */
-                margin: 0; /* Remove margin */
-                padding: 0; /* Remove padding */
+                height: 90.8vh; 
+                margin: 0; 
+                padding: 0; 
             }
-            /* Add a new CSS class to style the active tab as green */
+            
             .green-tab {
-                background-color: #4CAF50; /* Green color */
-                color: #fff; /* Text color */
+                background-color: #4CAF50; 
+                color: #fff; 
             }
             #otherFeesModal {
-    display: none; 
+    display: none;
     position: fixed;
-    z-index: 1; 
+    z-index: 1000; 
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content */
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto; 
+    margin: 10% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 90%; 
-    max-width: 1200px; 
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    line-height: 1.6;
-        font-size: 18px; 
-
-}
-/* Labels */
-.modal-content label {
-    margin-bottom: 8px; 
-    display: inline-block; 
-    font-weight: bold; 
-}
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+    width: 60%; 
+    max-width: 600px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 8px; 
+    animation: animatetop 0.4s;
+    font-size: 16px; 
 }
 
 .close {
-    color: white;
+    color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -87,94 +66,50 @@
     text-decoration: none;
     cursor: pointer;
 }
-/* Increase the padding inside the modal-content for more space */
-.modal-content {
-    padding: 40px; 
-    border-radius: 8px;
-    background-color: #fff;
-    margin: 15px auto;
-    width: 80%; 
-    max-width: 700px; 
+
+.form-group {
+    margin-bottom: 15px; 
 }
 
-/* Adjust spacing between form groups */
-.modal-form-group {
-    margin-bottom: 20px; 
-}
 
-/* Style checkboxes and radios for better spacing */
-.modal-form-group input[type="checkbox"],
-.modal-form-group input[type="radio"] {
-    margin-right: 15px; 
-    margin-bottom: 5px; 
-}
-
-/* Style labels for better spacing and clarity */
-.modal-form-group label {
+.form-group label {
     display: block;
-    margin-bottom: 10px; 
-    font-size: 1.1rem; 
-    font-weight: bold; 
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-/* Adjust select dropdowns for consistent styling */
-.modal-form-group select {
-    width: 100%;
-    padding: 12px; 
-    border: 1px solid #ddd;
+
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-top: 20px;
+    width: auto;
+    background-color: #5cb85c; 
+    color: white;
+    border: none;
     border-radius: 4px;
-    margin-bottom: 10px; 
+    cursor: pointer;
+}
+#otherFeesModal .modal-content h2 {
+    text-align: center;
+    margin: 0; 
+    padding: 20px 0; 
 }
 
-/* Modify button styles for better visibility and spacing */
-button.modal-submit-btn {
-    padding: 12px 30px; 
-    font-size: 1rem;
-    margin-top: 20px; 
-    width: auto; 
+
+button:hover {
+    background-color: #4cae4c; 
 }
 
-/* If you have titles or headers, you can adjust their margins too */
-.modal-header h2 {
-    margin-top: 0;
-    margin-bottom: 20px; 
-}
-@media (min-width: 768px) {
-    .modal-content {
-        margin-top: 2%; 
-    }
-}
 
-/* For even larger screens, you might want to center the modal more precisely */
-            @media (min-width: 992px) {
+            @media (max-width: 768px) {
                 .modal-content {
-                    margin-top: 50px; 
-                    margin-bottom: 50px; 
+                    width: 90%; 
+                    margin-top: 20%; 
                 }
+
             }
-            /* Form Controls */
-.modal-content input[type="text"],
-.modal-content input[type="number"],
-.modal-content input[type="email"],
-.modal-content select,
-.modal-content .btn {
-    font-size: 16px; 
-    padding: 10px; 
-}
-
-/* Buttons */
-.modal-content .btn {
-    padding: 12px 20px; 
-    font-size: 18px; 
-}
-
-/* Checkboxes and Radio Buttons */
-.modal-content input[type="checkbox"],
-.modal-content input[type="radio"] {
-    transform: scale(1.2); 
-    margin-right: 8px; 
-    vertical-align: middle; 
-}
         </style>
         <section class="section pb-0 hero-section" id="hero">
             <div class="col-xl-11.5" style="padding: 5%;">
@@ -411,70 +346,33 @@ button.modal-submit-btn {
                                                     <h4>DISCOUNT</h4>
                                                     <button type="button" class="btn btn-info" onclick="otherFeesButton" id="otherFeesButton">Other School Fees</button>
                                                     <!-- Other School Fees Modal -->
-                                                    <div id="otherFeesModal" class="modal" style="display: none;">
-                                                        <div class="modal-content">
-                                                            <span class="close">&times;</span>
-                                                            <h2>Other School Fees</h2>
-                                                            <!-- School Events -->
-                                                            <div class="form-group">
-                                                                <label>SCHOOL EVENTS: (Optional)</label>
-                                                                <div class="checkbox-group">
-                                                                    <input type="checkbox" id="fieldtrip" name="event" value="fieldtrip">
-                                                                    <label for="fieldtrip">Fieldtrip</label>
-                                                                    <input type="checkbox" id="jsprom" name="event" value="jsprom">
-                                                                    <label for="jsprom">JS Prom</label>
-                                                                    <input type="checkbox" id="retreat" name="event" value="retreat" />
-                                                                    <label for="retreat">Retreat</label>
-                                                                    <input type="checkbox" id="graduation" name="event" value="graduation" />
-                                                                    <label for="graduation">Graduation</label>
-
-                                                                    <!-- Add more checkboxes as needed -->
-                                                                </div>
-                                                            </div>
-                                                            <!-- Other Fees -->
-                                                            <div class="form-group">
-                                                                <label>OTHER SCHOOL FEES: (Optional)</label>
-                                                                <div class="checkbox-group">
-                                                                    <input type="checkbox" id="schoolUniform" name="other_fees" value="schoolUniform">
-                                                                    <label for="schoolUniform">School Uniform</label>
-                                                                    <input type="checkbox" id="peuniform" name="other_fees" value="peuniform">
-                                                                    <label for="schoolUniform">PE Uniform</label>
-                                                                    <input type="checkbox" id="foundationtshirt" name="other_fees" value="foundationtshirt">
-                                                                    <label for="schoolUniform">Foundation T-shirt</label>
-                                                                    <input type="checkbox" id="girlscoutuniform" name="other_fees" value="girlscoutuniform">
-                                                                    <label for="schoolUniform">Girl Scout Uniform</label>
-                                                                    <input type="checkbox" id="boyscoutuniform" name="other_fees" value="boyscoutuniform">
-                                                                    <label for="schoolUniform">Boy Scout Uniform</label>
-                                                                    <input type="checkbox" id="books" name="other_fees" value="books">
-                                                                    <label for="schoolUniform">Books</label>
-                                                                    <!-- Add more checkboxes as needed -->
-                                                                </div>
-                                                            </div>
-                                                            <!-- Shirt Sizes -->
-                                                            <div class="form-group">
-                                                                <label for="shirtSizes">SELECT THE SHIRT SIZES</label>
-                                                                <select id="shirtSizes" name="shirtSizes">
-                                                                    <option value="xs">Extra Small (XS)</option>
-                                                                    <option value="s">Small (S)</option>
-                                                                    <option value="m">Medium (M)</option>
-                                                                    <option value="l">Large (XS)</option>
-                                                                    <option value="xl">Extra Large (XS)</option>
-                                                                    <option value="2xl">2XL (Double Extra Large)</option>
-                                                                    <option value="3xl">3XL (Triple Extra Large)</option>
-                                                                    <option value="4xl">4XL (Quadruple Extra Large)</option>
-                                                                </select>
-                                                            </div>
-                                                            <!-- Gender -->
-                                                            <div class="form-group">
-                                                                <label>GENDER:</label>
-                                                                <input type="radio" id="male" name="gender" value="male">
-                                                                <label for="male">Male</label>
-                                                                <input type="radio" id="female" name="gender" value="female">
-                                                                <label for="female">Female</label>
-                                                            </div>
-                                                            <button type="button" onclick="submitOtherFeesForm()">Submit</button>
-                                                        </div>
-                                                    </div>
+                                                   <div id="otherFeesModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Other School Fees</h2>
+        <!-- School Events -->
+        <div class="form-group">
+            <label>SCHOOL EVENTS: </label>
+            <div class="checkbox-group">
+                <label for="fieldtrip">Fieldtrip</label>
+                <label for="jsprom">JS Prom</label>
+                <label for="retreat">Retreat</label>
+                <label for="graduation">Graduation</label>  
+            </div>
+        </div>      
+        <div class="form-group">
+            <label>OTHER SCHOOL FEES: </label>
+            <div class="checkbox-group">
+                <label for="schoolUniform">School Uniform</label>
+                <label for="peuniform">PE Uniform</label>
+                <label for="foundationtshirt">Foundation T-shirt</label>
+                <label for="scoutuniform">Scout Uniform</label>
+                <label for="books">Books</label>               
+            </div>
+        </div>
+       
+    </div>
+</div>
                                                     <script>
                                                         var modal = document.getElementById("otherFeesModal");
                                                         var btn = document.getElementById("otherFeesButton");
